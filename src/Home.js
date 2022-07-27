@@ -7,6 +7,8 @@ import ProductValues from "./modules/views/ProductValues";
 import ProductHowItWorks from "./modules/views/ProductHowItWorks";
 import ProductCTA from "./modules/views/ProductCTA";
 import AppAppBar from "./modules/views/AppAppBar";
+import withRoot from "./modules/withRoot";
+
 function Index() {
   return (
     <React.Fragment>
@@ -22,4 +24,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default withRoot(Index);
