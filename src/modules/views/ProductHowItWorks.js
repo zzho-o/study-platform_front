@@ -1,23 +1,23 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Button from '../components/Button';
-import Typography from '../components/Typography';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import Button from "../components/Button";
+import Typography from "../components/Typography";
 
 const item = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   px: 5,
 };
 
 const number = {
   fontSize: 24,
-  fontFamily: 'default',
-  color: 'secondary.main',
-  fontWeight: 'medium',
+  fontFamily: "default",
+  color: "secondary.main",
+  fontWeight: "medium",
 };
 
 const image = {
@@ -26,19 +26,20 @@ const image = {
 };
 
 function ProductHowItWorks() {
+  const search_type = "SEARCH BY STUDY";
   return (
     <Box
       component="section"
-      sx={{ display: 'flex', bgcolor: 'secondary.light', overflow: 'hidden' }}
+      sx={{ display: "flex", bgcolor: "secondary.light", overflow: "hidden" }}
     >
       <Container
         sx={{
           mt: 10,
           mb: 15,
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <Box
@@ -46,14 +47,14 @@ function ProductHowItWorks() {
           src="/static/themes/onepirate/productCurvyLines.png"
           alt="curvy lines"
           sx={{
-            pointerEvents: 'none',
-            position: 'absolute',
+            pointerEvents: "none",
+            position: "absolute",
             top: -180,
             opacity: 0.7,
           }}
         />
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
-          How it works
+          {search_type}
         </Typography>
         <div>
           <Grid container spacing={5}>
@@ -81,8 +82,8 @@ function ProductHowItWorks() {
                   sx={image}
                 />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so
-                  be quick.
+                  First come, first served. Our offers are in limited
+                  quantities, so be quick.
                 </Typography>
               </Box>
             </Grid>
@@ -96,8 +97,8 @@ function ProductHowItWorks() {
                   sx={image}
                 />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                  {"New offers every week. New experiences, new surprises. "}
+                  {"Your Sundays will no longer be alike."}
                 </Typography>
               </Box>
             </Grid>

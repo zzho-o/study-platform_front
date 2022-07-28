@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import AppBar from '../components/AppBar';
-import Toolbar from '../components/Toolbar';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import AppBar from "../components/AppBar";
+import Toolbar from "../components/Toolbar";
 
 const rightLink = {
   fontSize: 16,
-  color: 'common.white',
+  color: "common.white",
   ml: 3,
 };
 
@@ -14,7 +14,7 @@ function AppAppBar() {
   return (
     <div>
       <AppBar position="fixed">
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ flex: 1 }} />
           <Link
             variant="h6"
@@ -23,9 +23,9 @@ function AppAppBar() {
             href="/premium-themes/onepirate/"
             sx={{ fontSize: 24 }}
           >
-            {'onepirate'}
+            {"프로젝트 이름"}
           </Link>
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
             <Link
               color="inherit"
               variant="h6"
@@ -33,15 +33,15 @@ function AppAppBar() {
               href="/premium-themes/onepirate/sign-in/"
               sx={rightLink}
             >
-              {'Sign In'}
+              {"로그인"}
             </Link>
             <Link
               variant="h6"
               underline="none"
               href="/premium-themes/onepirate/sign-up/"
-              sx={{ ...rightLink, color: 'secondary.main' }}
+              sx={{ ...rightLink, color: "secondary.main" }}
             >
-              {'Sign Up'}
+              {"회원 가입"}
             </Link>
           </Box>
         </Toolbar>
