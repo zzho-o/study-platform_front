@@ -72,6 +72,7 @@ export default function ProductCategories() {
       <Typography variant="h4" marked="center" align="center" component="h2">
         {"WELCOME TO 프로젝트 이름 !"}
       </Typography>
+
       <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>
         {images.map((image) => (
           <ImageIconButton

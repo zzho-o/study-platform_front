@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
+import TextField from "../components/TextField";
 
 const item = {
   display: "flex",
@@ -53,6 +54,7 @@ function ProductHowItWorks() {
             opacity: 0.7,
           }}
         />
+
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
           {search_type}
         </Typography>
@@ -113,6 +115,20 @@ function ProductHowItWorks() {
           sx={{ mt: 8 }}
         >
           Get started
+        </Button>
+        <TextField
+          noBorder
+          placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
+          variant="standard"
+          sx={{ width: "100%", mt: 3, mb: 2 }}
+        />
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          sx={{ width: "20%" }}
+        >
+          검색
         </Button>
       </Container>
     </Box>

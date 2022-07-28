@@ -1,8 +1,4 @@
 import "./App.css";
-import Button from "./Button";
-import AppBar from "./AppBar";
-import Box from "@mui/material/Box";
-import InfoIcon from "@mui/icons-material/Info";
 import Home from "./Home";
 
 function App() {
