@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -26,8 +25,9 @@ const image = {
   my: 4,
 };
 
-function ProductHowItWorks() {
-  const search_type = "SEARCH BY STUDY";
+function ProductHowItWorks(props) {
+  const [sh, setSh] = React.useState("");
+  const [searchBy, setSearchBy] = React.useState(0);
   return (
     <Box
       component="section"
@@ -56,7 +56,7 @@ function ProductHowItWorks() {
         />
 
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
-          {search_type}
+          {sh}
         </Typography>
         <div>
           <Grid container spacing={5}>
