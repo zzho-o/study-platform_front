@@ -71,13 +71,13 @@ const images = [
 
 export default function ProductCategories() {
   const [searchBy, setSearchBy] = React.useState("");
+
   return (
     <Box>
       <Container component="section" sx={{ mt: 8, mb: 4 }}>
         <Typography variant="h4" marked="center" align="center" component="h2">
           {"WELCOME TO 프로젝트 이름 !"}
         </Typography>
-
         <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>
           {images.map((image) => (
             <ImageIconButton
@@ -85,7 +85,9 @@ export default function ProductCategories() {
               style={{
                 width: image.width,
               }}
-              onClick={() => setSearchBy(image.state)}
+              onClick={() => {
+                setSearchBy(image.state);
+              }}
             >
               <Box
                 sx={{

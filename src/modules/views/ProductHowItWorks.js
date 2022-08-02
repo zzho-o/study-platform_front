@@ -5,6 +5,10 @@ import Container from "@mui/material/Container";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
 import TextField from "../components/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 
 const item = {
   display: "flex",
@@ -26,6 +30,20 @@ const image = {
 };
 
 function ProductHowItWorks(props) {
+  const [region, setRegion] = React.useState("");
+  const [ct, setCt] = React.useState("");
+  const [classfy, setClassfy] = React.useState("");
+  const [career, setCareer] = React.useState("");
+  const [sortBy, setSortBy] = React.useState("");
+  const handleRegion = (e) => {
+    setRegion(e.target.value);
+    setCt("");
+  };
+  const city = {
+    서울: ["마포구"],
+    인천: ["계양구"],
+    경기: ["수원시"],
+  };
   return (
     <Box
       component="section"
@@ -46,7 +64,81 @@ function ProductHowItWorks(props) {
         </Typography>
         {props.searchBy !== "" ? (
           <div>
-            <Grid container spacing={5}>
+            <Grid item xs={100} md={4}>
+              <FormControl sx={{ m: 1, minWidth: 100 }}>
+                <InputLabel id="SL1">지역</InputLabel>
+                <Select
+                  labelId="L1"
+                  id="S1"
+                  value={region}
+                  label="region"
+                  onChange={handleRegion}
+                >
+                  <MenuItem value={"서울"}>서울</MenuItem>
+                  <MenuItem value={"경기"}>경기</MenuItem>
+                  <MenuItem value={"인천"}>인천</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 100 }}>
+                <InputLabel id="SL5">시/구/군</InputLabel>
+                <Select
+                  labelId="L5"
+                  id="S5"
+                  value={ct}
+                  label="region"
+                  onChange={(e) => setCt(e.target.value)}
+                >
+                  {city[region]
+                    ? city[region].map((item) => (
+                        <MenuItem value={item}>{item}</MenuItem>
+                      ))
+                    : null}
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 100 }}>
+                <InputLabel id="Sl2">분류</InputLabel>
+                <Select
+                  labelId="L2"
+                  id="S2"
+                  value={classfy}
+                  onChange={(e) => setClassfy(e.target.value)}
+                  label="classification"
+                >
+                  <MenuItem value={"직장인"}>직장인</MenuItem>
+                  <MenuItem value={"학생"}>학생</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 100 }}>
+                <InputLabel id="Sl3">경력</InputLabel>
+                <Select
+                  labelId="L3"
+                  id="S3"
+                  value={career}
+                  onChange={(e) => setCareer(e.target.value)}
+                  label="career"
+                >
+                  <MenuItem value={"무관"}>무관</MenuItem>
+                  <MenuItem value={"신입"}>신입</MenuItem>
+                  <MenuItem value={"1년"}>1년</MenuItem>
+                  <MenuItem value={"2년"}>2년</MenuItem>
+                  <MenuItem value={"3년 이상"}>3년 이상</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 100 }}>
+                <InputLabel id="Sl4">정렬</InputLabel>
+                <Select
+                  labelId="L4"
+                  id="S4"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  label="sort"
+                >
+                  <MenuItem value={"인기순"}>인기순</MenuItem>
+                  <MenuItem value={"최근순"}>최근순</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            {/* <Grid container spacing={5}>
               <Grid item xs={12} md={4}>
                 <Box sx={item}>
                   <Box sx={number}>1.</Box>
@@ -91,7 +183,7 @@ function ProductHowItWorks(props) {
                   </Typography>
                 </Box>
               </Grid>
-            </Grid>
+            </Grid> */}
             <Button
               color="secondary"
               size="large"
@@ -106,6 +198,7 @@ function ProductHowItWorks(props) {
         ) : null}
 
         <TextField
+          ref={props.ref}
           noBorder
           placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
           variant="standard"
