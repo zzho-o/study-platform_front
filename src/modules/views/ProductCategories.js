@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
 import Typography from "../components/Typography";
-import { CategorySelector } from "../../Home";
+import ProductHowItWorks from "./ProductHowItWorks";
 
 const ImageBackdrop = styled("div")(({ theme }) => ({
   position: "absolute",
@@ -59,70 +59,75 @@ const images = [
     url: "https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400",
     title: "STUDY",
     width: "50%",
+    state: "study",
   },
   {
     url: "https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400",
     title: "PROJECT",
     width: "50%",
+    state: "project",
   },
 ];
 
 export default function ProductCategories() {
-  const a = React.useContext(CategorySelector);
+  const [searchBy, setSearchBy] = React.useState("");
   return (
-    <Container component="section" sx={{ mt: 8, mb: 4 }}>
-      <Typography variant="h4" marked="center" align="center" component="h2">
-        {"WELCOME TO 프로젝트 이름 !"}
-      </Typography>
+    <Box>
+      <Container component="section" sx={{ mt: 8, mb: 4 }}>
+        <Typography variant="h4" marked="center" align="center" component="h2">
+          {"WELCOME TO 프로젝트 이름 !"}
+        </Typography>
 
-      <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>
-        {images.map((image) => (
-          <ImageIconButton
-            key={image.title}
-            style={{
-              width: image.width,
-            }}
-            onClick={() => console.log(a)}
-          >
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                backgroundSize: "cover",
-                backgroundPosition: "center 40%",
-                backgroundImage: `url(${image.url})`,
+        <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>
+          {images.map((image) => (
+            <ImageIconButton
+              key={image.title}
+              style={{
+                width: image.width,
               }}
-            />
-            <ImageBackdrop className="imageBackdrop" />
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "common.white",
-              }}
+              onClick={() => setSearchBy(image.state)}
             >
-              <Typography
-                component="h3"
-                variant="h6"
-                color="inherit"
-                className="imageTitle"
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center 40%",
+                  backgroundImage: `url(${image.url})`,
+                }}
+              />
+              <ImageBackdrop className="imageBackdrop" />
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "common.white",
+                }}
               >
-                {image.title}
-                <div className="imageMarked" />
-              </Typography>
-            </Box>
-          </ImageIconButton>
-        ))}
-      </Box>
-    </Container>
+                <Typography
+                  component="h3"
+                  variant="h6"
+                  color="inherit"
+                  className="imageTitle"
+                >
+                  {image.title}
+                  <div className="imageMarked" />
+                </Typography>
+              </Box>
+            </ImageIconButton>
+          ))}
+        </Box>
+      </Container>
+      <ProductHowItWorks searchBy={searchBy} />
+    </Box>
   );
 }
