@@ -9,6 +9,9 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import Chip from "@mui/material/Chip";
+import Fab from "@mui/material/Fab";
+import Switch from "@mui/material/Switch";
 
 const item = {
   display: "flex",
@@ -30,11 +33,24 @@ const image = {
 };
 
 function ProductHowItWorks(props) {
+  const [state, setState] = React.useState({
+    region: "",
+    ct: "",
+    classfy: "",
+    career: "",
+    sortBy: "",
+    isRecruit: false,
+  });
+  const handleprops = (e) => {
+    setState({ ...state, [e.target.label]: e.target.value });
+  };
+
   const [region, setRegion] = React.useState("");
   const [ct, setCt] = React.useState("");
   const [classfy, setClassfy] = React.useState("");
   const [career, setCareer] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
+  const [isRecruit, setIsRecruit] = React.useState(false);
   const handleRegion = (e) => {
     setRegion(e.target.value);
     setCt("");
@@ -44,6 +60,27 @@ function ProductHowItWorks(props) {
     인천: ["계양구"],
     경기: ["수원시"],
   };
+
+  const region_bundle = [
+    "서울",
+    "부산",
+    "대구",
+    "인천",
+    "광주",
+    "대전",
+    "울산",
+    "경기",
+    "강원",
+    "충남",
+    "충북",
+    "전남",
+    "전북",
+    "경남",
+    "경북",
+    "제주",
+    "세종",
+  ];
+
   return (
     <Box
       component="section"
@@ -63,82 +100,103 @@ function ProductHowItWorks(props) {
           {props.searchBy}
         </Typography>
         {props.searchBy !== "" ? (
-          <div>
-            <Grid item xs={100} md={4}>
-              <FormControl sx={{ m: 1, minWidth: 100 }}>
-                <InputLabel id="SL1">지역</InputLabel>
-                <Select
-                  labelId="L1"
-                  id="S1"
-                  value={region}
-                  label="region"
-                  onChange={handleRegion}
-                >
-                  <MenuItem value={"서울"}>서울</MenuItem>
-                  <MenuItem value={"경기"}>경기</MenuItem>
-                  <MenuItem value={"인천"}>인천</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 100 }}>
-                <InputLabel id="SL5">시/구/군</InputLabel>
-                <Select
-                  labelId="L5"
-                  id="S5"
-                  value={ct}
-                  label="region"
-                  onChange={(e) => setCt(e.target.value)}
-                >
-                  {city[region]
-                    ? city[region].map((item) => (
+          <Container>
+            <Container>
+              <Grid container spacing={0}>
+                <Grid item xs={0} md={1.5}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                    <InputLabel id="SL1">지역</InputLabel>
+                    <Select
+                      labelId="L1"
+                      id="S1"
+                      value={state.region}
+                      label="region"
+                      onChange={(e) => console.log(e)}
+                    >
+                      {region_bundle.map((item) => (
                         <MenuItem value={item}>{item}</MenuItem>
-                      ))
-                    : null}
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 100 }}>
-                <InputLabel id="Sl2">분류</InputLabel>
-                <Select
-                  labelId="L2"
-                  id="S2"
-                  value={classfy}
-                  onChange={(e) => setClassfy(e.target.value)}
-                  label="classification"
-                >
-                  <MenuItem value={"직장인"}>직장인</MenuItem>
-                  <MenuItem value={"학생"}>학생</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 100 }}>
-                <InputLabel id="Sl3">경력</InputLabel>
-                <Select
-                  labelId="L3"
-                  id="S3"
-                  value={career}
-                  onChange={(e) => setCareer(e.target.value)}
-                  label="career"
-                >
-                  <MenuItem value={"무관"}>무관</MenuItem>
-                  <MenuItem value={"신입"}>신입</MenuItem>
-                  <MenuItem value={"1년"}>1년</MenuItem>
-                  <MenuItem value={"2년"}>2년</MenuItem>
-                  <MenuItem value={"3년 이상"}>3년 이상</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 100 }}>
-                <InputLabel id="Sl4">정렬</InputLabel>
-                <Select
-                  labelId="L4"
-                  id="S4"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  label="sort"
-                >
-                  <MenuItem value={"인기순"}>인기순</MenuItem>
-                  <MenuItem value={"최근순"}>최근순</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            {/* <Grid container spacing={5}>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3} md={1.5}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                    <InputLabel id="SL5">시/구/군</InputLabel>
+                    <Select
+                      labelId="L5"
+                      id="S5"
+                      value={state.ct}
+                      label="ct"
+                      onChange={handleprops}
+                    >
+                      {city[region]
+                        ? city[region].map((item) => (
+                            <MenuItem value={item}>{item}</MenuItem>
+                          ))
+                        : null}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3} md={1.5}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                    <InputLabel id="Sl2">분류</InputLabel>
+                    <Select
+                      labelId="L2"
+                      id="S2"
+                      value={state.classfy}
+                      onChange={handleprops}
+                      label="classify"
+                    >
+                      <MenuItem value={"직장인"}>직장인</MenuItem>
+                      <MenuItem value={"학생"}>학생</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3} md={1.5}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                    <InputLabel id="Sl3">경력</InputLabel>
+                    <Select
+                      labelId="L3"
+                      id="S3"
+                      value={state.career}
+                      onChange={handleprops}
+                      label="career"
+                    >
+                      <MenuItem value={"무관"}>무관</MenuItem>
+                      <MenuItem value={"신입"}>신입</MenuItem>
+                      <MenuItem value={"1년"}>1년</MenuItem>
+                      <MenuItem value={"2년"}>2년</MenuItem>
+                      <MenuItem value={"3년 이상"}>3년 이상</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3} md={1.5}>
+                  <FormControl sx={{ m: 1, minWidth: 100 }}>
+                    <InputLabel id="Sl4">정렬</InputLabel>
+                    <Select
+                      labelId="L4"
+                      id="S4"
+                      value={state.sortBy}
+                      onChange={handleprops}
+                      label="sortBy"
+                    >
+                      <MenuItem value={"인기순"}>인기순</MenuItem>
+                      <MenuItem value={"최근순"}>최근순</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid xs={3}>
+                  <Switch
+                    defaultChecked
+                    color="secondary"
+                    aria-label="isRecruit"
+                  />
+                  <Typography variant="subtitle1" gutterBottom component="div">
+                    모집중만 보기
+                  </Typography>
+                </Grid>
+              </Grid>
+              {/* <Grid container spacing={5}>
               <Grid item xs={12} md={4}>
                 <Box sx={item}>
                   <Box sx={number}>1.</Box>
@@ -184,34 +242,69 @@ function ProductHowItWorks(props) {
                 </Box>
               </Grid>
             </Grid> */}
+            </Container>
+            <Container
+              sx={{
+                mt: 2,
+                mb: 2,
+                display: "flex",
+                flexDirection: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Fab
+                variant="extended"
+                size="midium"
+                color="secondary"
+                sx={{ ml: 1, mr: 1 }}
+              >
+                front-end
+              </Fab>
+              <Fab
+                variant="extended"
+                size="midium"
+                color="secondary"
+                sx={{ ml: 1, mr: 1 }}
+              >
+                back-end
+              </Fab>
+              <Fab
+                variant="extended"
+                size="midium"
+                color="secondary"
+                sx={{ ml: 1, mr: 1 }}
+              >
+                모바일
+              </Fab>
+              <Fab
+                variant="extended"
+                size="midium"
+                color="secondary"
+                sx={{ ml: 1, mr: 1 }}
+              >
+                기타
+              </Fab>
+              <Fab
+                variant="extended"
+                size="midium"
+                color="secondary"
+                sx={{ ml: 1, mr: 1 }}
+              >
+                모두보기
+              </Fab>
+            </Container>
             <Button
               color="secondary"
               size="large"
               variant="contained"
               component="a"
-              href="/premium-themes/onepirate/sign-up/"
+              href="www.naver.com"
               sx={{ mt: 8 }}
             >
-              Get started
+              찾기
             </Button>
-          </div>
+          </Container>
         ) : null}
-
-        <TextField
-          ref={props.ref}
-          noBorder
-          placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
-          variant="standard"
-          sx={{ width: "100%", mt: 3, mb: 2 }}
-        />
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          sx={{ width: "20%" }}
-        >
-          검색
-        </Button>
       </Container>
     </Box>
   );

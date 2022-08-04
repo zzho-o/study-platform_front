@@ -5,6 +5,8 @@ import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
 import Typography from "../components/Typography";
 import ProductHowItWorks from "./ProductHowItWorks";
+import TextField from "../components/TextField";
+import Button from "../components/Button";
 
 const ImageBackdrop = styled("div")(({ theme }) => ({
   position: "absolute",
@@ -129,6 +131,20 @@ export default function ProductCategories() {
           ))}
         </Box>
       </Container>
+      <TextField
+        noBorder
+        placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
+        variant="outlined"
+        sx={{ width: "70%", mt: 0, mb: 5 }}
+      />
+      <Button
+        type="submit"
+        color="primary"
+        variant="contained"
+        sx={{ width: "20%", mb: 5 }}
+      >
+        검색
+      </Button>
       <ProductHowItWorks searchBy={searchBy} />
     </Box>
   );
