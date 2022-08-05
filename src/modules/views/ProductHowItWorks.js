@@ -4,7 +4,6 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
-import TextField from "../components/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -12,25 +11,6 @@ import InputLabel from "@mui/material/InputLabel";
 import Chip from "@mui/material/Chip";
 import Fab from "@mui/material/Fab";
 import Switch from "@mui/material/Switch";
-
-const item = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  px: 5,
-};
-
-const number = {
-  fontSize: 24,
-  fontFamily: "default",
-  color: "secondary.main",
-  fontWeight: "medium",
-};
-
-const image = {
-  height: 55,
-  my: 4,
-};
 
 function ProductHowItWorks(props) {
   const [state, setState] = React.useState({
@@ -41,11 +21,17 @@ function ProductHowItWorks(props) {
     sortBy: "",
     isRecruit: false,
   });
+  const handleSwitch = () => {
+    setState({
+      ...state,
+      isRecruit: !state.isRecruit,
+    });
+  };
   const handleState = (e) => {
     e.target.name === "region"
       ? setState({
           ...state,
-          ["ct"]: "",
+          ct: "",
           [e.target.name]: e.target.value,
         })
       : setState({ ...state, [e.target.name]: e.target.value });
@@ -320,8 +306,9 @@ function ProductHowItWorks(props) {
                 </Grid>
                 <Grid xs={3}>
                   <Switch
-                    defaultChecked
                     name="switch"
+                    checked={state.isRecruit}
+                    onChange={handleSwitch}
                     color="secondary"
                     aria-label="isRecruit"
                   />
@@ -393,7 +380,7 @@ function ProductHowItWorks(props) {
             </Button>
           </Container>
         ) : null}
-        {/* 백에서 데이터 받고 여기에 게시물 컴포넌트 렌더링 하기! */}
+        {/* 백에서 데이터 받고 여기에 게시물 컴포넌트 렌더링 하기 */}
       </Container>
     </Box>
   );
