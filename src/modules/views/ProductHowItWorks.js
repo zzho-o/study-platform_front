@@ -41,24 +41,152 @@ function ProductHowItWorks(props) {
     sortBy: "",
     isRecruit: false,
   });
-  const handleprops = (e) => {
-    setState({ ...state, [e.target.label]: e.target.value });
-  };
+  const handleState = (e) => {
+    e.target.name === "region"
+      ? setState({
+          ...state,
+          ["ct"]: "",
+          [e.target.name]: e.target.value,
+        })
+      : setState({ ...state, [e.target.name]: e.target.value });
 
-  const [region, setRegion] = React.useState("");
-  const [ct, setCt] = React.useState("");
-  const [classfy, setClassfy] = React.useState("");
-  const [career, setCareer] = React.useState("");
-  const [sortBy, setSortBy] = React.useState("");
-  const [isRecruit, setIsRecruit] = React.useState(false);
-  const handleRegion = (e) => {
-    setRegion(e.target.value);
-    setCt("");
+    console.log(state, e.target);
   };
   const city = {
-    서울: ["마포구"],
-    인천: ["계양구"],
-    경기: ["수원시"],
+    서울: [
+      "강남구",
+      "강동구",
+      "강북구",
+      "강서구",
+      "관악구",
+      "광진구",
+      "구로구",
+      "금천구",
+      "노원구",
+      "도봉구",
+      "동대문구",
+      "동작구",
+      "마포구",
+      "서대문구",
+      "서초구",
+      "성동구",
+      "성북구",
+      "송파구",
+      "양천구",
+      "영등포구",
+      "용산구",
+      "은평구",
+      "종로구",
+      "중구",
+      "중랑구",
+    ],
+    부산: [
+      "중구",
+      "서구",
+      "동구",
+      "영도구",
+      "부산진구",
+      "동래구",
+      "남구",
+      "북구",
+      "해운대구",
+      "사하구",
+      "금정구",
+      "강서구",
+      "연제구",
+      "수영구",
+      "사상구",
+    ],
+    대구: ["중구", "동구", "서구", "남구", "북구", "수성구", "달서구"],
+    인천: [
+      "중구",
+      "동구",
+      "미추홀구",
+      "연수구",
+      "남동구",
+      "부평구",
+      "계양구",
+      "서구",
+    ],
+    광주: ["동구", "서구", "남구", "북구", "광산구"],
+    대전: ["동구", "중구", "서구", "유성구", "대덕구"],
+    울산: ["중구", "남구", "동구", "북구"],
+    경기: [
+      "수원시",
+      "성남시",
+      "의정부시",
+      "안양시",
+      "부천시",
+      "광명시",
+      "평택시",
+      "동두천시",
+      "안산시",
+      "고양시",
+      "과천시",
+      "구리시",
+      "남양주시",
+      "오산시",
+      "시흥시",
+      "군포시",
+      "의왕시",
+      "하남시",
+      "용인시",
+      "파주시",
+      "이천시",
+      "안성시",
+      "김포시",
+      "화성시",
+      "광주시",
+      "양주시",
+      "포천시",
+      "여주시",
+    ],
+    강원: [
+      "춘천시",
+      "원주시",
+      "강릉시",
+      "동해시",
+      "태백시",
+      "속초시",
+      "삼척시",
+    ],
+    충남: [
+      "천안시",
+      "공주시",
+      "보령시",
+      "아산시",
+      "서산시",
+      "논산시",
+      "계룡시",
+      "당진시",
+    ],
+    충북: ["청주시", "충주시", "제천시"],
+    전남: ["목포시", "여수시", "순천시", "나주시", "광양시"],
+    전북: ["전주시", "군산시", "익산시", "정읍시", "남원시", "김제시"],
+    경남: [
+      "창원시",
+      "진주시",
+      "통영시",
+      "사천시",
+      "김해시",
+      "밀양시",
+      "거제시",
+      "양산시",
+    ],
+    경북: [
+      "포항시",
+      "경주시",
+      "김천시",
+      "안동시",
+      "구미시",
+      "영주시",
+      "영천시",
+      "상주시",
+      "문경시",
+      "경산시",
+    ],
+    제주: ["제주시", "서귀포시"],
+    세종: ["None"],
   };
 
   const region_bundle = [
@@ -108,10 +236,11 @@ function ProductHowItWorks(props) {
                     <InputLabel id="SL1">지역</InputLabel>
                     <Select
                       labelId="L1"
+                      name="region"
                       id="S1"
                       value={state.region}
                       label="region"
-                      onChange={(e) => console.log(e)}
+                      onChange={handleState}
                     >
                       {region_bundle.map((item) => (
                         <MenuItem value={item}>{item}</MenuItem>
@@ -121,16 +250,17 @@ function ProductHowItWorks(props) {
                 </Grid>
                 <Grid item xs={3} md={1.5}>
                   <FormControl sx={{ m: 1, minWidth: 100 }}>
-                    <InputLabel id="SL5">시/구/군</InputLabel>
+                    <InputLabel id="SL5">시/구</InputLabel>
                     <Select
                       labelId="L5"
+                      name="ct"
                       id="S5"
                       value={state.ct}
                       label="ct"
-                      onChange={handleprops}
+                      onChange={handleState}
                     >
-                      {city[region]
-                        ? city[region].map((item) => (
+                      {city[state.region]
+                        ? city[state.region].map((item) => (
                             <MenuItem value={item}>{item}</MenuItem>
                           ))
                         : null}
@@ -142,9 +272,10 @@ function ProductHowItWorks(props) {
                     <InputLabel id="Sl2">분류</InputLabel>
                     <Select
                       labelId="L2"
+                      name="classify"
                       id="S2"
-                      value={state.classfy}
-                      onChange={handleprops}
+                      value={state.classify}
+                      onChange={handleState}
                       label="classify"
                     >
                       <MenuItem value={"직장인"}>직장인</MenuItem>
@@ -157,9 +288,10 @@ function ProductHowItWorks(props) {
                     <InputLabel id="Sl3">경력</InputLabel>
                     <Select
                       labelId="L3"
+                      name="career"
                       id="S3"
                       value={state.career}
-                      onChange={handleprops}
+                      onChange={handleState}
                       label="career"
                     >
                       <MenuItem value={"무관"}>무관</MenuItem>
@@ -175,9 +307,10 @@ function ProductHowItWorks(props) {
                     <InputLabel id="Sl4">정렬</InputLabel>
                     <Select
                       labelId="L4"
+                      name="sortBy"
                       id="S4"
                       value={state.sortBy}
-                      onChange={handleprops}
+                      onChange={handleState}
                       label="sortBy"
                     >
                       <MenuItem value={"인기순"}>인기순</MenuItem>
@@ -188,6 +321,7 @@ function ProductHowItWorks(props) {
                 <Grid xs={3}>
                   <Switch
                     defaultChecked
+                    name="switch"
                     color="secondary"
                     aria-label="isRecruit"
                   />
@@ -196,52 +330,6 @@ function ProductHowItWorks(props) {
                   </Typography>
                 </Grid>
               </Grid>
-              {/* <Grid container spacing={5}>
-              <Grid item xs={12} md={4}>
-                <Box sx={item}>
-                  <Box sx={number}>1.</Box>
-                  <Box
-                    component="img"
-                    src="/static/themes/onepirate/productHowItWorks1.svg"
-                    alt="suitcase"
-                    sx={image}
-                  />
-                  <Typography variant="h5" align="center">
-                    Appointment every Wednesday 9am.
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Box sx={item}>
-                  <Box sx={number}>2.</Box>
-                  <Box
-                    component="img"
-                    src="/static/themes/onepirate/productHowItWorks2.svg"
-                    alt="graph"
-                    sx={image}
-                  />
-                  <Typography variant="h5" align="center">
-                    First come, first served. Our offers are in limited
-                    quantities, so be quick.
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Box sx={item}>
-                  <Box sx={number}>3.</Box>
-                  <Box
-                    component="img"
-                    src="/static/themes/onepirate/productHowItWorks3.svg"
-                    alt="clock"
-                    sx={image}
-                  />
-                  <Typography variant="h5" align="center">
-                    {"New offers every week. New experiences, new surprises. "}
-                    {"Your Sundays will no longer be alike."}
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid> */}
             </Container>
             <Container
               sx={{
@@ -298,13 +386,14 @@ function ProductHowItWorks(props) {
               size="large"
               variant="contained"
               component="a"
-              href="www.naver.com"
+              href="/SearchResert"
               sx={{ mt: 8 }}
             >
               찾기
             </Button>
           </Container>
         ) : null}
+        {/* 백에서 데이터 받고 여기에 게시물 컴포넌트 렌더링 하기! */}
       </Container>
     </Box>
   );
