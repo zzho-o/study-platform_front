@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import Switch from "@mui/material/Switch";
 
@@ -19,6 +20,7 @@ function ProductHowItWorks(props) {
     classfy: "",
     career: "",
     sortBy: "",
+    stack: [1, 2, 3],
     isRecruit: false,
   });
   const handleSwitch = () => {
@@ -368,6 +370,22 @@ function ProductHowItWorks(props) {
                 모두보기
               </Fab>
             </Container>
+            <Stack
+              sx={{
+                ml: 4,
+                mt: 2,
+                mb: 2,
+                display: "flex",
+                flexDirection: "flex",
+                alignItems: "center",
+              }}
+              spacing={1}
+              direction="row"
+            >
+              {state.stack.map((item) => (
+                <Chip label={item} color="secondary" />
+              ))}
+            </Stack>
             <Button
               color="secondary"
               size="large"
