@@ -22,7 +22,33 @@ function ProductHowItWorks(props) {
     sortBy: "",
     stack: [1, 2, 3],
     isRecruit: false,
+    tech: "",
+    front: ["JavaScript", "TypeScript", "React", "Vue"],
+    back: ["Python", "C", "C++", "Java", "Spring", "Django"],
+    mobile: ["Android", "IOS"],
+    etc: ["직접입력"],
   });
+  const [tech, setTech] = React.useState(false);
+  const handleTech = (e) => {
+    if (state.tech === e.currentTarget.name) {
+      setTech(false);
+      setState({ ...state, tech: "" });
+    } else {
+      if (e.currentTarget.name === "all") {
+        setTech([
+          ...state["front"],
+          ...state["back"],
+          ...state["mobile"],
+          ...state["etc"],
+        ]);
+        setState({ ...state, tech: e.currentTarget.name });
+      } else {
+        setTech(state[e.currentTarget.name]);
+        setState({ ...state, tech: e.currentTarget.name });
+      }
+    }
+    console.log(tech, e.currentTarget.name, state.tech);
+  };
   const handleSwitch = () => {
     setState({
       ...state,
@@ -37,8 +63,6 @@ function ProductHowItWorks(props) {
           [e.target.name]: e.target.value,
         })
       : setState({ ...state, [e.target.name]: e.target.value });
-
-    console.log(state, e.target);
   };
   const city = {
     서울: [
@@ -334,6 +358,8 @@ function ProductHowItWorks(props) {
                 size="midium"
                 color="secondary"
                 sx={{ ml: 1, mr: 1 }}
+                name="front"
+                onClick={handleTech}
               >
                 front-end
               </Fab>
@@ -342,6 +368,8 @@ function ProductHowItWorks(props) {
                 size="midium"
                 color="secondary"
                 sx={{ ml: 1, mr: 1 }}
+                name="back"
+                onClick={handleTech}
               >
                 back-end
               </Fab>
@@ -350,6 +378,8 @@ function ProductHowItWorks(props) {
                 size="midium"
                 color="secondary"
                 sx={{ ml: 1, mr: 1 }}
+                name="mobile"
+                onClick={handleTech}
               >
                 모바일
               </Fab>
@@ -358,6 +388,8 @@ function ProductHowItWorks(props) {
                 size="midium"
                 color="secondary"
                 sx={{ ml: 1, mr: 1 }}
+                name="etc"
+                onClick={handleTech}
               >
                 기타
               </Fab>
@@ -366,6 +398,8 @@ function ProductHowItWorks(props) {
                 size="midium"
                 color="secondary"
                 sx={{ ml: 1, mr: 1 }}
+                name="all"
+                onClick={handleTech}
               >
                 모두보기
               </Fab>
@@ -382,9 +416,9 @@ function ProductHowItWorks(props) {
               spacing={1}
               direction="row"
             >
-              {state.stack.map((item) => (
-                <Chip label={item} color="secondary" />
-              ))}
+              {tech
+                ? tech.map((item) => <Chip label={item} color="secondary" />)
+                : null}
             </Stack>
             <Button
               color="secondary"
