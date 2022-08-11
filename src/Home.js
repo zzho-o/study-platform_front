@@ -6,15 +6,17 @@ import ProductHowItWorks from "./modules/views/ProductHowItWorks";
 import ProductCTA from "./modules/views/ProductCTA";
 import AppAppBar from "./modules/views/AppAppBar";
 import withRoot from "./modules/withRoot";
+import Signup from "./modules/views/signup";
 
 function Index() {
   return (
     <React.Fragment>
-      <AppAppBar />
+      {/* <AppAppBar />
       <ProductCategories />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter />
+      <AppFooter /> */}
+      <Signup />
     </React.Fragment>
   );
 }
