@@ -11,12 +11,11 @@ import Signup from "./modules/views/signup";
 function Index() {
   return (
     <React.Fragment>
-      {/* <AppAppBar />
+      <AppAppBar />
       <ProductCategories />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter /> */}
-      <Signup />
+      <AppFooter />
     </React.Fragment>
   );
 }

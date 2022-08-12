@@ -38,7 +38,7 @@ function AppAppBar() {
             <Link
               variant="h6"
               underline="none"
-              href="/premium-themes/onepirate/sign-up/"
+              href="/sign-up/"
               sx={{ ...rightLink, color: "secondary.main" }}
             >
               {"회원 가입"}
