@@ -11,6 +11,7 @@ const rightLink = {
 };
 
 function AppAppBar() {
+  const [isLogin, setIsLogin] = React.useState(false);
   return (
     <div>
       <AppBar position="fixed">
@@ -25,25 +26,27 @@ function AppAppBar() {
           >
             {"프로젝트 이름"}
           </Link>
-          <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/premium-themes/onepirate/sign-in/"
-              sx={rightLink}
-            >
-              {"로그인"}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="/sign-up/"
-              sx={{ ...rightLink, color: "secondary.main" }}
-            >
-              {"회원 가입"}
-            </Link>
-          </Box>
+          {isLogin ? (
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+              <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                href="/premium-themes/onepirate/sign-in/"
+                sx={rightLink}
+              >
+                {"로그인"}
+              </Link>
+              <Link
+                variant="h6"
+                underline="none"
+                href="/sign-up/"
+                sx={{ ...rightLink, color: "secondary.main" }}
+              >
+                {"회원 가입"}
+              </Link>
+            </Box>
+          ) : null}
         </Toolbar>
       </AppBar>
       <Toolbar />
