@@ -13,7 +13,7 @@ function App() {
         <h2> {name} !</h2>
       </header> */}
       {/* <Home /> */}
-      <SignIn />
+      <SignUp />
     </div>
   );
 }
