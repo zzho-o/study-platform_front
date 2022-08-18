@@ -1,6 +1,8 @@
 import "./App.css";
 import Home from "./Home";
 import React from "react";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 function App() {
   return (
@@ -10,7 +12,8 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-      <Home />
+      {/* <Home /> */}
+      <SignIn />
     </div>
   );
 }

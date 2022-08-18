@@ -11,7 +11,7 @@ const rightLink = {
 };
 
 function AppAppBar() {
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(true);
   return (
     <div>
       <AppBar position="fixed">
@@ -46,7 +46,9 @@ function AppAppBar() {
                 {"회원 가입"}
               </Link>
             </Box>
-          ) : null}
+          ) : (
+            <Box sx={{ flex: 1 }}></Box>
+          )}
         </Toolbar>
       </AppBar>
       <Toolbar />
