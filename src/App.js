@@ -3,6 +3,7 @@ import Home from "./Home";
 import React from "react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import Mypage from "./MyPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <h2> {name} !</h2>
       </header> */}
       {/* <Home /> */}
-      <SignUp />
+      <Mypage />
     </div>
   );
 }
