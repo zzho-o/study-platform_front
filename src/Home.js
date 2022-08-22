@@ -5,15 +5,17 @@ import AppFooter from "./modules/views/AppFooter";
 import ProductCTA from "./modules/views/ProductCTA";
 import AppAppBar from "./modules/views/AppAppBar";
 import withRoot from "./modules/withRoot";
+import Mypage from "./MyPage";
 
 function Index() {
   return (
     <React.Fragment>
       <AppAppBar />
-      <ProductCategories />
+      <Mypage />
+      {/* <ProductCategories />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter />
+      <AppFooter /> */}
     </React.Fragment>
   );
 }

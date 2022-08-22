@@ -1,6 +1,7 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import Typography from "./modules/components/Typography";
 
 export default function SignUp() {
   const handleSubmit = (event) => {
@@ -15,7 +16,6 @@ export default function SignUp() {
   return (
     <Box
       sx={{
-        marginTop: 8,
         marginLeft: 10,
         display: "flex",
         flexDirection: "column",
@@ -28,8 +28,11 @@ export default function SignUp() {
           marginBottom: 3,
         }}
       >
-        <Avatar></Avatar>
+        <Avatar sx={{ width: "150px", height: "150px" }}></Avatar>
       </Box>
+      <Typography variant="h4" align="left" component="h2">
+        {"zzho"}
+      </Typography>
       <Avatar></Avatar>
       <Avatar></Avatar>
       <Avatar></Avatar>
