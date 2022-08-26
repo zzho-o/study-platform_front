@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import UserVideoComponent from './UserVideoComponent';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
-import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
+import HeadsetIcon from '@mui/icons-material/Headset';
+import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
+import MicOffIcon from '@mui/icons-material/MicOff';
+import HeadsetOffIcon from '@mui/icons-material/HeadsetOff';
 
 // 로컬 미디어 서버 주소
 const OPENVIDU_SERVER_URL = "https://" + window.location.hostname + ":4443";
@@ -27,8 +30,8 @@ const Header = styled.div `
 
 const StudyTitle = styled.p `
 color:white;
-font-weight: 400;
-font-size: 20px;
+font-weight: 500;
+font-size: 25px;
 `;
 
 const ExitButton = styled.button `
@@ -36,7 +39,7 @@ const ExitButton = styled.button `
     color: white;
     border-radius: 5px;
     width: 70px;
-    height:60%;
+    height:35px;
     border:none;
     padding: 5px;
     cursor:pointer;
@@ -111,6 +114,7 @@ const Icon = styled.div`
 
 
 class OnlineMeeting extends Component {
+
     render() {
         return (
             <Container>
@@ -154,16 +158,16 @@ class OnlineMeeting extends Component {
 
                 <Bottom>
                     <BottomBox>
-                        <Icon>
-                            <VideocamOutlinedIcon />
+                        <Icon onClick={() => this.setState({isCamera:!this.state.isCamera})}>
+                            {this.state.isCamera ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
                         </Icon>
 
-                        <Icon>
-                            <MicOutlinedIcon />
+                        <Icon onClick={() => this.setState({isMike:!this.state.isMike})}>
+                            {this.state.isMike ? <MicOutlinedIcon /> : <MicOffIcon />}
                         </Icon>
 
-                        <Icon>
-                            <HeadphonesOutlinedIcon />
+                        <Icon onClick={() => this.setState({isSpeaker:!this.state.isSpeaker})}>
+                            {this.state.isSpeaker ? <HeadsetIcon /> : <HeadsetOffIcon />}
                         </Icon>
                     </BottomBox>
                 </Bottom>
@@ -181,6 +185,9 @@ class OnlineMeeting extends Component {
             mainStreamManager: undefined,
             publisher: undefined, // 로컬 웹캠 스트림
             subscribers: [], // 다른 사용자의 활성 스트림
+            isMike: true,
+            isCamera: true,
+            isSpeaker: true,
         };
 
         this.joinSession = this
