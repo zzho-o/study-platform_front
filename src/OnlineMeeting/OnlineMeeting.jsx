@@ -30,8 +30,7 @@ const Header = styled.div `
 
 const StudyTitle = styled.p `
 color:white;
-font-weight: 500;
-font-size: 25px;
+font-size: 20px;
 `;
 
 const ExitButton = styled.button `
@@ -123,7 +122,7 @@ class OnlineMeeting extends Component {
                         Java Study
                     </StudyTitle>
 
-                    <ExitButton>
+                    <ExitButton onClick={this.leaveSession}>
                         나가기
                     </ExitButton>
                 </Header>
@@ -134,7 +133,7 @@ class OnlineMeeting extends Component {
                             this.state.publisher !== undefined
                                 ? (
                                     <StreamContainer
-                                        onClick={() => this.handleMainVideoStream(this.state.publisher)}>
+                                        >
                                         <UserVideoComponent streamManager={this.state.publisher}/>
                                     </StreamContainer>
                                 )
@@ -147,7 +146,7 @@ class OnlineMeeting extends Component {
                                 .map((sub, i) => (
                                     <StreamContainer
                                         key={i}
-                                        onClick={() => this.handleMainVideoStream(sub)}>
+                                        >
                                         <UserVideoComponent streamManager={sub}/>
                                     </StreamContainer>
                                 ))
@@ -266,8 +265,11 @@ class OnlineMeeting extends Component {
                 let subscriber = mySession.subscribe(e.stream, undefined);
                 var subscribers = this.state.subscribers;
                 subscribers.push(subscriber);
+                
 
                 this.setState({subscribers});
+
+                console.log(subscribers);
             });
 
             // 사용자가 화상회의를 떠나면 Session 객체에서 소멸된 stream을 받아와 subscribers 상태값 업뎃
