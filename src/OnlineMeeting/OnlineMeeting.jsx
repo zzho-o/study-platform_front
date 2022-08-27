@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {OpenVidu} from 'openvidu-browser';
 import axios from "axios";
 import styled from 'styled-components';
@@ -9,6 +9,8 @@ import HeadsetIcon from '@mui/icons-material/Headset';
 import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import HeadsetOffIcon from '@mui/icons-material/HeadsetOff';
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import ChatIcon from '@mui/icons-material/Chat';
 
 // 로컬 미디어 서버 주소
 const OPENVIDU_SERVER_URL = "https://" + window.location.hostname + ":4443";
@@ -25,47 +27,61 @@ const Header = styled.div `
     display: flex;
     align-items: center;
     padding:0 50px;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 const StudyTitle = styled.p `
 color:white;
 font-size: 20px;
+font-weight:600;
 `;
 
-const ExitButton = styled.button `
-    background-color: crimson;
-    color: white;
-    border-radius: 5px;
-    width: 70px;
-    height:35px;
-    border:none;
-    padding: 5px;
-    cursor:pointer;
-    font-weight: 700;
-    &:hover{
-        background-color: #e03d5e;
-    }
+const Middle = styled.div`
+    width:100%;
+    display: flex;
+    overflow: hidden;
 `;
 
-const VideoWrapper = styled.div`
+
+const Left = styled.div`
+    flex:3;
     width:100%;
     display:flex;
     justify-content: center;
 `;
 
+const Right = styled.div`
+    position: relative;
+    padding:0 20px;
+    display:flex;
+    align-items: center;
+    transition:.5s;
+    ${(props) => props.primary ? `right:0; flex:1;` : `right:calc(-100vw/3); flex:0;`}
+`;
+
+const Chat = styled.div`
+    width:100%;
+    height:93%;
+    border-radius: 5px;
+    background-color:white;
+`;
+
 const VideoContainer = styled.div`
 width:94%;
-height:75vh;
+height:77vh;
 overflow: hidden;
 `;
 
 const StreamContainerWrapper = styled.div`
     display: grid;
     place-items: center;
+    ${(props) => props.primary ? `
+    grid-template-columns: repeat(3, 1fr);
+    ` : `
     grid-template-columns: repeat(4, 1fr);
+    `}
     grid-gap: 20px;
-    height: 70vh;
+    height: 100%;
     padding: 10px;
   @media screen and (max-width:800px) {
       background-color: red;
@@ -73,24 +89,26 @@ const StreamContainerWrapper = styled.div`
 `;
 
 const StreamContainer = styled.div`
-    height: 100%;
     width: 100%;
     position: relative;
     border-radius: 5px;
-    min-height: 35vh;
+    min-height: 34vh;
     overflow: hidden;
+    box-sizing: border-box;
 `;
 
 const Bottom = styled.div`
-    height:17vh;
+    height:13vh;
     display:flex;
     justify-content: center;
+    position:relative;
+    align-items: center;
 `;
 
 const BottomBox = styled.div`
     display:flex;
     height:100%;
-    width:15%;
+    width:20%;
     align-items: center;
     justify-content: space-around;
 `;
@@ -105,12 +123,30 @@ const Icon = styled.div`
     background-color: #333;
     color:white;
     cursor:pointer;
-    transition:.2s;
+    transition:.1s;
     &:hover{
         background-color:#3C4043;
     }
+
+    ${(props) =>
+    props.primary && 
+    `
+      background-color: red;
+      color: white;
+      &:hover{
+          background-color: red;
+      }
+    `}
 `;
 
+const ChatIconBox = styled.div`
+    position:absolute;
+    color:white;
+    right:60px;
+    top:50%;
+    bottom:50%;
+    cursor:pointer;
+`;
 
 class OnlineMeeting extends Component {
 
@@ -122,17 +158,31 @@ class OnlineMeeting extends Component {
                         Java Study
                     </StudyTitle>
 
-                    <ExitButton onClick={this.leaveSession}>
-                        나가기
-                    </ExitButton>
                 </Header>
-                <VideoWrapper>
+                <Middle>
+                    {this.state.session === undefined ? (
+                    <div style={{"position":"absolute","right":"0", "left":"0"}}id="join">
+                        <div>
+                            <h1 style={{"color":"white"}}> Join a video session </h1>
+                            <form className="form-group" onSubmit={this.joinSession}>
+                                <p className="text-center">
+                                    <input className="btn btn-lg btn-success" name="commit" type="submit" value="JOIN" />
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                ) : null}
+                <Left>
                     <VideoContainer>
-                        <StreamContainerWrapper>
+
+                    {
+                                this.state.session !== undefined ? (
+                                    <StreamContainerWrapper primary={this.state.isChat} ref={this.userRef}>
+                            
                         {
                             this.state.publisher !== undefined
                                 ? (
-                                    <StreamContainer
+                                    <StreamContainer key = {this.state.publisher.stream.streamId}
                                         >
                                         <UserVideoComponent streamManager={this.state.publisher}/>
                                     </StreamContainer>
@@ -144,31 +194,46 @@ class OnlineMeeting extends Component {
                                 .state
                                 .subscribers
                                 .map((sub, i) => (
-                                    <StreamContainer
-                                        key={i}
+                                    
+                                    <StreamContainer key = {sub.stream.streamId}
                                         >
                                         <UserVideoComponent streamManager={sub}/>
                                     </StreamContainer>
                                 ))
                         }
                         </StreamContainerWrapper>
+                                ) : null
+                            }
+                        
                     </VideoContainer>
-                </VideoWrapper>
-
+                </Left>
+                <Right primary={this.state.isChat}>
+                    <Chat>그룹채팅?</Chat>
+                </Right>
+                </Middle>            
                 <Bottom>
                     <BottomBox>
-                        <Icon onClick={() => this.setState({isCamera:!this.state.isCamera})}>
-                            {this.state.isCamera ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
+                        <Icon primary={!this.state.isCamera} onClick={() => this.handleToggle("camera")}>
+                            {this.state.isCamera ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon/>}
                         </Icon>
 
-                        <Icon onClick={() => this.setState({isMike:!this.state.isMike})}>
+                        <Icon primary={!this.state.isMike} onClick={() => this.handleToggle("mike")}>
                             {this.state.isMike ? <MicOutlinedIcon /> : <MicOffIcon />}
                         </Icon>
 
-                        <Icon onClick={() => this.setState({isSpeaker:!this.state.isSpeaker})}>
+                        <Icon primary={!this.state.isSpeaker} onClick={() => this.handleToggle("speaker")}>
                             {this.state.isSpeaker ? <HeadsetIcon /> : <HeadsetOffIcon />}
                         </Icon>
+
+                        <Icon primary onClick={this.leaveSession}>
+                            <CallEndIcon/>
+                        </Icon>
+
+                        
                     </BottomBox>
+                    <ChatIconBox onClick={() => this.setState({isChat:!this.state.isChat})}>
+                            <ChatIcon />
+                        </ChatIconBox>  
                 </Bottom>
             </Container>
         )
@@ -176,6 +241,7 @@ class OnlineMeeting extends Component {
 
     constructor(props) {
         super(props);
+        this.userRef = React.createRef();
 
         this.state = {
             mySessionId:'SessionA',
@@ -187,6 +253,7 @@ class OnlineMeeting extends Component {
             isMike: true,
             isCamera: true,
             isSpeaker: true,
+            isChat: false,
         };
 
         this.joinSession = this
@@ -201,13 +268,17 @@ class OnlineMeeting extends Component {
         this.onbeforeunload = this
             .onbeforeunload
             .bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
     }
 
     componentDidMount() {
         // this.leaveSession();
         window.addEventListener('beforeunload', this.onbeforeunload);
-        this.joinSession();
         // 스터디방에서 화상회의 입장 -> props로 roomId로 받으면 세션id 업뎃 user 정보 전역변수 가져옴 -> 상태값 업뎃
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('beforeunload', this.onbeforeunload);
     }
 
     onbeforeunload(e) {
@@ -248,8 +319,41 @@ class OnlineMeeting extends Component {
         }
     }
 
+    handleToggle(kind) {
+        if(this.state.publisher){
+
+            switch(kind){
+                case "camera":
+                    this.setState({isCamera:!this.state.isCamera}, () => {
+                        console.log(this.state.publisher);
+                        this.state.publisher.publishVideo(this.state.isCamera);
+                    });
+                    break;
+
+                case "speaker":
+                    this.setState({isSpeaker:!this.state.isSpeaker}, () => {
+                        this.state.subscribers.forEach(s => s.subscribeToAudio(this.state.isSpeaker));
+                    });
+                    break;
+
+                case "mike":
+                    this.setState({isMike:!this.state.isMike}, () => {
+                        this.state.publisher.publishAudio(this.state.isMike);
+                    });
+                    break;
+            }
+        }
+    }    
+
     joinSession() {
         this.OV = new OpenVidu(); // OpenVidu 객체를 얻음
+
+        this.OV.setAdvancedConfiguration({
+            publisherSpeakingEventsOptions: {
+                interval: 50,
+                threshold: -75,
+            },
+        });
 
         this.setState({
             session: this
@@ -282,6 +386,26 @@ class OnlineMeeting extends Component {
                 console.warn(exception);
             });
 
+            // 발언자 감지
+            mySession.on('publisherStartSpeaking', (event) => {
+                for(let i = 0; i < this.userRef.current.children.length; i++){
+                    if(JSON.parse(event.connection.data).clientData === this.userRef.current.children[i].innerText){
+                        this.userRef.current.children[i].style.borderStyle = "solid";
+                        this.userRef.current.children[i].style.borderColor = "#1773EA";
+                    }
+                }
+                console.log('User ' + event.connection.connectionId + ' start speaking');
+            });
+            
+            mySession.on('publisherStopSpeaking', (event) => {
+                console.log('User ' + event.connection.connectionId + ' stop speaking');
+                for(let i = 0; i < this.userRef.current.children.length; i++){
+                    if(JSON.parse(event.connection.data).clientData === this.userRef.current.children[i].innerText){
+                        this.userRef.current.children[i].style.borderStyle = "none";
+                    }
+                }
+            });
+
             this
                 .getToken()
                 .then((token) => {
@@ -289,7 +413,7 @@ class OnlineMeeting extends Component {
                         .connect(token, {
                             clientData: this.state.myUserName
                         },)
-                        .then(async () => {
+                        .then( () => {
                             let publisher = this
                                 .OV
                                 .initPublisher(undefined, {
@@ -319,7 +443,7 @@ class OnlineMeeting extends Component {
             .createSession(this.state.mySessionId)
             .then((sessionId) => this.createToken(sessionId));
     }
-
+ 
     createSession(sessionId) {
         return new Promise((resolve, reject) => {
             let data = JSON.stringify({customSessionId: sessionId});
