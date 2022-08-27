@@ -14,7 +14,6 @@ function App() {
         <h2> {name} !</h2>
       </header> */}
       <Home />
-      {/* <Mypage /> */}
     </div>
   );
 }

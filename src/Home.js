@@ -6,12 +6,14 @@ import ProductCTA from "./modules/views/ProductCTA";
 import AppAppBar from "./modules/views/AppAppBar";
 import withRoot from "./modules/withRoot";
 import Mypage from "./MyPage";
+import SignIn from "./SignIn";
 
 function Index() {
   return (
     <React.Fragment>
       <AppAppBar />
-      <Mypage />
+      {/* <Mypage /> */}
+      <SignIn />
       {/* <ProductCategories />
       <ProductCTA />
       <ProductSmokingHero />
