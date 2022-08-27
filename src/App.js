@@ -4,6 +4,8 @@ import React from "react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Mypage from "./MyPage";
+import OnlineMeeting from "./OnlineMeeting/OnlineMeeting";
+import Chat from "./Chat/Chat";
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-      <Home />
+      {/* <Home /> */}
+      <Chat />
+      {/* <Mypage /> */}
     </div>
   );
 }
