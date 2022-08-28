@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components';
 import AppAppBar from '../modules/views/AppAppBar'
-import withRoot from '../modules/withRoot'
 import Conversation from './Conversation';
 import Message from './Message';
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 
 const Container = styled.div`
     text-align: left;
-    height:calc(100vh - 100px);
+    height:calc(100vh - 90px);
     display: flex;
 
     
 `;
 
 const ChatMenu = styled.div`
-    flex: 3;
+    flex: 2.5;
     border-right:1px solid lightgray;
 `;
 const ChatBox = styled.div`
@@ -28,6 +28,7 @@ const ChatRightBar = styled.div`
 const ChatMenuWrapper = styled.div`
     padding:10px 0;
     height:100%;
+    overflow-y: scroll;
     `;
 
 const ChatBoxWrapper = styled.div`
@@ -36,8 +37,6 @@ const ChatBoxWrapper = styled.div`
     display: flex;
     flex-direction: column;
     `;
-
-
 
 const Top = styled.div`
     width:100%;
@@ -63,12 +62,14 @@ const ChatBoxBottom = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position:relative;
     `;
 
 const ChatMessageInput = styled.textarea`
     width: 80%;
-    height: 90px;
+    height: 50px;
     padding: 10px;
+    margin-bottom: 5%;
     `;
 
 const ChatSubmitButton = styled.button`
@@ -95,13 +96,22 @@ const ProfileImage = styled.img`
     border-radius:50%;
     object-fit:cover;
     margin-top: 30px;
-    `;
+`;
+
+const FileUpload = styled.div`
+    cursor:pointer;
+    position:absolute;
+    bottom:0;
+    left:1%;    
+    color: gray;
+`;
 
 const ProfileName = styled.h3`
 
 `;
 
 const Chat = () => {
+    const scrollRef = useRef();
   return (
       <>
       <AppAppBar />
@@ -112,37 +122,44 @@ const Chat = () => {
                     <ChatMenuInput placeholder="대화 내용 또는 친구 검색"></ChatMenuInput>
                     </Top>
                     <Conversation unread={true} online={true}/>
-                    <Conversation unread={false} online={false}/>
+                    <Conversation unread={false} online={false} click={true}/>
                     <Conversation unread={true} online={false}/>
-                    <Conversation unread={false} online={true}/>
                     <Conversation unread={false} online={false}/>
+                    <Conversation unread={false} online={true}/>
+
                 </ChatMenuWrapper>
             </ChatMenu>
 
             <ChatBox>
                 <ChatBoxWrapper>
                     <ChatBoxTop>
-                        <Message me={false}/>
-                        <Message me={true}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
+                        <div ref={scrollRef}>
+                            <Message me={false}/>
+                            <Message me={true}/>
+                            <Message me={false}/>
+                            <Message me={true}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                            <Message me={false}/>
+                        </div>
                     </ChatBoxTop>
 
                     <ChatBoxBottom>
                         <ChatMessageInput></ChatMessageInput>
                         <ChatSubmitButton>전송</ChatSubmitButton>
+                        <label for="file">
+                            <FileUpload><AttachFileOutlinedIcon style={{"fontSize":"22px"}} /></FileUpload>
+                        </label>
+                        <input style={{"display":"none"}} type="file" name="file" id="file" />
                     </ChatBoxBottom>
                 </ChatBoxWrapper>
             </ChatBox>

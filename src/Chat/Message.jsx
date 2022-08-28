@@ -34,6 +34,12 @@ const MessageImage = styled.img`
 const MessageText = styled.p`
     padding: 10px;
     border-radius: 20px;
+    ${(props) => props.me === false && `
+      border-top-left-radius: 0%;
+    `}
+    ${(props) => props.me === true && `
+      border-top-right-radius:0%;
+    `}
     background-color: #f3f3f3;
     max-width: 300px;
     color: #202020;
