@@ -15,8 +15,8 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-      {/* <Home /> */}
-      <Chat />
+      <Home />
+      {/* <Chat /> */}
       {/* <Mypage /> */}
     </div>
   );
