@@ -1,25 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
 import AppAppBar from '../modules/views/AppAppBar'
-import withRoot from '../modules/withRoot'
 import Conversation from './Conversation';
-import Message from './Message';
+import ChatBox from './ChatBox';
 
 const Container = styled.div`
     text-align: left;
-    height:calc(100vh - 100px);
+    height:calc(100vh - 90px);
     display: flex;
-
-    
 `;
 
 const ChatMenu = styled.div`
-    flex: 3;
+    flex: 2.5;
     border-right:1px solid lightgray;
 `;
-const ChatBox = styled.div`
-    flex: 6;
-`;
+
 const ChatRightBar = styled.div`
     flex: 2.5;
 `;
@@ -28,16 +23,8 @@ const ChatRightBar = styled.div`
 const ChatMenuWrapper = styled.div`
     padding:10px 0;
     height:100%;
+    overflow-y: scroll;
     `;
-
-const ChatBoxWrapper = styled.div`
-    padding:10px 20px;
-    height:100%;
-    display: flex;
-    flex-direction: column;
-    `;
-
-
 
 const Top = styled.div`
     width:100%;
@@ -51,35 +38,6 @@ const ChatMenuInput = styled.input`
     border:none;
     border-bottom: 1px solid gray;
     `;
-
-const ChatBoxTop = styled.div`
-    height:100%;
-    overflow-y: scroll;
-    padding-right: 10px;
-    `;
-
-const ChatBoxBottom = styled.div`
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    `;
-
-const ChatMessageInput = styled.textarea`
-    width: 80%;
-    height: 90px;
-    padding: 10px;
-    `;
-
-const ChatSubmitButton = styled.button`
-    width: 70px;
-    height: 40px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    background-color: #FAE57C;
-    `;
-
 
 const ChatRightBarWrapper = styled.div`
     padding:10px;
@@ -95,13 +53,16 @@ const ProfileImage = styled.img`
     border-radius:50%;
     object-fit:cover;
     margin-top: 30px;
-    `;
+`;
+
 
 const ProfileName = styled.h3`
 
 `;
 
 const Chat = () => {
+
+
   return (
       <>
       <AppAppBar />
@@ -112,40 +73,15 @@ const Chat = () => {
                     <ChatMenuInput placeholder="대화 내용 또는 친구 검색"></ChatMenuInput>
                     </Top>
                     <Conversation unread={true} online={true}/>
-                    <Conversation unread={false} online={false}/>
+                    <Conversation unread={false} online={false} click={true}/>
                     <Conversation unread={true} online={false}/>
-                    <Conversation unread={false} online={true}/>
                     <Conversation unread={false} online={false}/>
+                    <Conversation unread={false} online={true}/>
+
                 </ChatMenuWrapper>
             </ChatMenu>
 
-            <ChatBox>
-                <ChatBoxWrapper>
-                    <ChatBoxTop>
-                        <Message me={false}/>
-                        <Message me={true}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                        <Message me={false}/>
-                    </ChatBoxTop>
-
-                    <ChatBoxBottom>
-                        <ChatMessageInput></ChatMessageInput>
-                        <ChatSubmitButton>전송</ChatSubmitButton>
-                    </ChatBoxBottom>
-                </ChatBoxWrapper>
-            </ChatBox>
+            <ChatBox />
 
             <ChatRightBar>
                 <ChatRightBarWrapper>
