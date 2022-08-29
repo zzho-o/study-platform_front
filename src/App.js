@@ -7,18 +7,27 @@ import Mypage from "./MyPage";
 import OnlineMeeting from "./OnlineMeeting/OnlineMeeting";
 import Chat from "./Chat/Chat";
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <Routes>
+        <Route path="/chat/:id" element={<Chat/>} />
       {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
       {/* <Home /> */}
-      <Chat />
       {/* <Mypage /> */}
-    </div>
+    </Routes>
+    </Router>
   );
 }
 
