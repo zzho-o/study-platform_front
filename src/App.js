@@ -6,6 +6,7 @@ import SignIn from "./SignIn";
 import Mypage from "./MyPage";
 import OnlineMeeting from "./OnlineMeeting/OnlineMeeting";
 import Chat from "./Chat/Chat";
+import Redirect from "./Redirect";
 
 import {
   BrowserRouter as Router,
@@ -24,7 +25,8 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-        <Home />
+        <Route path="/" element={<Home />} />
+        <Route path="/Redirect" element={<Redirect />} />
       </Routes>
     </Router>
   );

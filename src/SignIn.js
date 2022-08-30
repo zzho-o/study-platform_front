@@ -13,10 +13,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import FormButton from "./modules/form/FormButton";
+import { KAKAO_AUTH_URL } from "./Kakao";
+import { GITHUB_AUTH_URL } from "./GitHub";
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,7 +27,6 @@ export default function SignUp() {
       password: data.get("password"),
     });
   };
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -51,6 +52,7 @@ export default function SignUp() {
             <Button
               fullWidth
               variant="contained"
+              href={GITHUB_AUTH_URL}
               sx={{ mt: 3, mb: 2, bgcolor: "black" }}
             >
               GitHub으로 간편 로그인
@@ -80,6 +82,7 @@ export default function SignUp() {
             <Button
               fullWidth
               variant="contained"
+              href={KAKAO_AUTH_URL}
               sx={{ mt: 3, mb: 2, bgcolor: "yellow", color: "black" }}
             >
               Kakaotalk으로 간편 로그인
