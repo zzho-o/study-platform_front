@@ -13,7 +13,7 @@ import CallEndIcon from '@mui/icons-material/CallEnd';
 import ChatIcon from '@mui/icons-material/Chat';
 
 // 로컬 미디어 서버 주소
-const OPENVIDU_SERVER_URL = "https://" + window.location.hostname + ":4443";
+const OPENVIDU_SERVER_URL = "https://jadu-study-flatform.shop:8443";
 const OPENVIDU_SERVER_SECRET = "MY_SECRET"
 
 const Container = styled.div `
@@ -161,10 +161,10 @@ class OnlineMeeting extends Component {
                 </Header>
                 <Middle>
                     {this.state.session === undefined ? (
-                    <div style={{"position":"absolute","right":"0", "left":"0"}}id="join">
+                    <div style={{"position":"absolute","right":"0", "left":"0", "width":"300px", "margin":"auto", "height":"300px"}}id="join">
                         <div>
                             <h1 style={{"color":"white"}}> Join a video session </h1>
-                            <form className="form-group" onSubmit={this.joinSession}>
+                            <form style={{ "display":"flex", "justifyContent":"center"}} className="form-group" onSubmit={this.joinSession}>
                                 <p className="text-center">
                                     <input className="btn btn-lg btn-success" name="commit" type="submit" value="JOIN" />
                                 </p>

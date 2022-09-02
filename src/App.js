@@ -20,6 +20,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/chat/:id" element={<Chat />} />
+        <Route path="/openvidu" element={<OnlineMeeting />} />
+
         {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>
