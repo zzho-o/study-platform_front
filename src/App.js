@@ -14,6 +14,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import Study from "./study/Study";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Study />} />
         <Route path="/Redirect" element={<Redirect />} />
       </Routes>
     </Router>
