@@ -7,7 +7,10 @@ function Redirect() {
   const get_info = async () => {
     try {
       return await axios.post(
-        "https://jadu-study-flatform.shop/api/oauth/kakao"
+        "https://jadu-study-flatform.shop/api/oauth/kakao",
+        {
+          code: code_params,
+        }
       );
     } catch (err) {
       console.log(err);
