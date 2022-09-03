@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {format} from 'timeago.js';
 
 
 const Container = styled.div`
@@ -51,16 +52,41 @@ const MessageText = styled.p`
     `}
 `;
 
-const Message = ({me}) => {
+const timeForToday = (value) => {
+  const today = new Date();
+  const timeValue = new Date(value);
+
+  console.log(today, value);
+
+  const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+  if (betweenTime < 1) return '방금전';
+  if (betweenTime < 60) {
+      return `${betweenTime}분전`;
+  }
+
+  const betweenTimeHour = Math.floor(betweenTime / 60);
+  if (betweenTimeHour < 24) {
+      return `${betweenTimeHour}시간전`;
+  }
+
+  const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+  if (betweenTimeDay < 365) {
+      return `${betweenTimeDay}일전`;
+  }
+
+  return `${Math.floor(betweenTimeDay / 365)}년전`;
+}
+
+const Message = ({me, message, createdAt}) => {
   return (
     <Container me={me}>
       <MessageTop>
         <MessageImage me={me} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9CpA4I6pOTcI6CNL9vo0T_hUU_xreMcfA2ZTUmH4NuQ0TmwlqquuJdE88LbOBR3zQyE&usqp=CAU" alt=""></MessageImage>
-        <MessageText me={me}>안녕하세요 저는 백엔드 개발자입니다. 만나서 반갑습니다 ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</MessageText>
+        <MessageText me={me}>{message}</MessageText>
       </MessageTop>
 
       <MessageBottom>
-        1시간전
+      {timeForToday(createdAt)}
       </MessageBottom>
     </Container>
   )
