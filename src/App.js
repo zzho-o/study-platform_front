@@ -17,6 +17,7 @@ import {
 import Study from "./study/Study";
 import StudyChat from "./study/StudyChat";
 import StudyCalendar from "./study/StudyCalendar";
+import Personnel from "./personnel/Personnel";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-        <Route path="/" element={<StudyCalendar />} />
+        <Route path="/" element={<Personnel />} />
         <Route path="/Redirect" element={<Redirect />} />
       </Routes>
     </Router>

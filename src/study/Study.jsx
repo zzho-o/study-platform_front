@@ -8,7 +8,7 @@ import Notice from './Notice';
 import RightBar from './RightBar';
 
 const Container = styled.div`
-font-family: 'Gothic A1', sans-serif;   
+    font-family: 'Gothic A1', sans-serif;   
     display: flex;
     height:calc(100vh - 90px);
 `;
