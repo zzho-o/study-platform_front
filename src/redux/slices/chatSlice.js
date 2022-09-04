@@ -25,6 +25,11 @@ export const getChatMessage = createAsyncThunk("GET_CHAT_MESSAGE", async (payloa
 const chatSlice = createSlice({
     name:"chat",
     initialState,
+    reducers:{
+        subMessage(state, action) {
+            state.messages.data.push(action.payload);
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getChatMessage.fulfilled, (state, action) => {
             state.messages = action.payload.data;
@@ -32,4 +37,5 @@ const chatSlice = createSlice({
     }
 });
 
+export const {subMessage} = chatSlice.actions;
 export default chatSlice.reducer;

@@ -7,7 +7,7 @@ import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import styled from 'styled-components';
-import { getChatMessage } from '../redux/slices/chatSlice';
+import { getChatMessage, subMessage } from '../redux/slices/chatSlice';
 import axios from 'axios';
 
 const Container = styled.div`
@@ -87,7 +87,7 @@ const ChatBox = () => {
         ws.current.connect({}, () => {
             ws.current.subscribe(`/sub/chat/room/${roomId}`, (res) => {
                 const message = JSON.parse(res.body);
-                console.log(message);
+                dispatch(subMessage(message));
             });
         })
     }, [roomId]);
@@ -117,9 +117,9 @@ const ChatBox = () => {
             const message = {
                 roomId: roomId,
                 message: text,
-                otherUserIds: [1], // 메시지 받는 상대방
-                type:0,
-                userId:5 // 임시
+                otherUserIds: [5], // 메시지 받는 상대방
+                type:"TALK",
+                userId:1 // 임시
             };
 
             if (text === "") {

@@ -11,6 +11,7 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import HeadsetOffIcon from '@mui/icons-material/HeadsetOff';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import ChatIcon from '@mui/icons-material/Chat';
+import ChatBox from "../Chat/ChatBox";
 
 // 로컬 미디어 서버 주소
 const OPENVIDU_SERVER_URL = "https://jadu-study-flatform.shop:8443";
@@ -64,6 +65,7 @@ const Chat = styled.div`
     height:93%;
     border-radius: 5px;
     background-color:white;
+    display: flex;
 `;
 
 const VideoContainer = styled.div`
@@ -208,7 +210,7 @@ class OnlineMeeting extends Component {
                     </VideoContainer>
                 </Left>
                 <Right primary={this.state.isChat}>
-                    <Chat>그룹채팅?</Chat>
+                    <Chat><ChatBox /></Chat>
                 </Right>
                 </Middle>            
                 <Bottom>
