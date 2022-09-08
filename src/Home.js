@@ -13,11 +13,11 @@ function Index() {
     <React.Fragment>
       <AppAppBar />
       {/* <Mypage /> */}
-      <SignIn />
-      {/* <ProductCategories />
+      {/* <SignIn /> */}
+      <ProductCategories />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter /> */}
+      <AppFooter />
     </React.Fragment>
   );
 }

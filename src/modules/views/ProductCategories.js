@@ -131,20 +131,29 @@ export default function ProductCategories() {
           ))}
         </Box>
       </Container>
-      <TextField
-        noBorder
-        placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
-        variant="outlined"
-        sx={{ width: "70%", mt: 0, mb: 5 }}
-      />
-      <Button
-        type="submit"
-        color="primary"
-        variant="contained"
-        sx={{ width: "20%", mb: 5 }}
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
-        검색
-      </Button>
+        <TextField
+          noBorder
+          placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
+          variant="outlined"
+          sx={{ width: "60%", mt: 0, mb: 5 }}
+        />
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          sx={{ width: "20%", mb: 5 }}
+        >
+          검색
+        </Button>
+      </Box>
       <ProductHowItWorks searchBy={searchBy} />
     </Box>
   );

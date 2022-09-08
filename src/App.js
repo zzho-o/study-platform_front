@@ -31,7 +31,8 @@ function App() {
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
-        <Route path="/" element={<Personnel />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/Personnel" element={<Personnel />} />
         <Route path="/Redirect" element={<Redirect />} />
       </Routes>
     </Router>
