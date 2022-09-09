@@ -7,6 +7,7 @@ import Mypage from "./MyPage";
 import OnlineMeeting from "./OnlineMeeting/OnlineMeeting";
 import Chat from "./Chat/Chat";
 import Redirect from "./Redirect";
+import MyPage from "./MyPage";
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ import Study from "./study/Study";
 import StudyChat from "./study/StudyChat";
 import StudyCalendar from "./study/StudyCalendar";
 import Personnel from "./personnel/Personnel";
+import CreateStudy from "./CreateStudy";
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
       <Routes>
         <Route path="/chat/:id" element={<Chat />} />
         <Route path="/openvidu" element={<OnlineMeeting />} />
-
+        <Route path="/CreateStudy" element={<CreateStudy />} />
+        <Route path="/MyPage" element={<MyPage />} />
         {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>

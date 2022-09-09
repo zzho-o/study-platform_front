@@ -5,8 +5,6 @@ import AppFooter from "./modules/views/AppFooter";
 import ProductCTA from "./modules/views/ProductCTA";
 import AppAppBar from "./modules/views/AppAppBar";
 import withRoot from "./modules/withRoot";
-import Mypage from "./MyPage";
-import SignIn from "./SignIn";
 
 function Index() {
   return (
