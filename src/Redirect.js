@@ -25,6 +25,7 @@ function Redirect() {
             headers: {
               token: code_params,
             },
+            withCredentials: true,
           }
         )
         .then((res) => {
