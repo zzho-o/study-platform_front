@@ -20,13 +20,12 @@ function Redirect() {
       return await axios
         .post(
           "https://jadu-study-flatform.shop/api/oauth/kakao",
-          {},
           {
             headers: {
               token: code_params,
             },
-            withCredentials: true,
-          }
+          },
+          { withCredentials: true }
         )
         .then((res) => {
           console.log(res);
