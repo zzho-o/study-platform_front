@@ -6,6 +6,7 @@ import Toolbar from "../components/Toolbar";
 import styled from "styled-components";
 import Modal from "react-modal";
 import SignIn from "../../SignIn";
+import { Typography } from "@mui/material";
 
 const rightLink = {
   fontSize: 16,
@@ -15,9 +16,11 @@ const rightLink = {
 
 function AppAppBar() {
   const [isLogin, setIsLogin] = React.useState(true);
-  const [closeModal, setCloseModal] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
-  console.log(modalOpen);
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div>
       <AppBar position="fixed">
@@ -30,7 +33,17 @@ function AppAppBar() {
             href="/premium-themes/onepirate/"
             sx={{ fontSize: 24 }}
           >
-            {"프로젝트 이름"}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              {"여기!"}
+              <Typography variant="h4" color="white">
+                자
+              </Typography>
+              {"바"}
+              <Typography variant="h4" color="white">
+                두
+              </Typography>
+              {"명이요!"}
+            </Box>
           </Link>
           {isLogin ? (
             <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
@@ -44,7 +57,7 @@ function AppAppBar() {
         </Toolbar>
       </AppBar>
       <Toolbar />
-      {modalOpen && <SignIn />}
+      {modalOpen && <SignIn closeModal={closeModal} />}
     </div>
   );
 }

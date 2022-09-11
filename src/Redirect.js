@@ -7,7 +7,6 @@ function Redirect() {
   const code_params = code.searchParams.get("code");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
-  let data;
   // React.useEffect(async () => {
   //     await axios.post('https://jadu-study-flatform.shop/api/oauth/kakao', {
   //     headers: {
@@ -17,31 +16,22 @@ function Redirect() {
   // })
   const get_info = async () => {
     try {
-      return await axios
-        .post(
-          "https://jadu-study-flatform.shop/api/oauth/kakao",
-          {
-            headers: {
-              token: code_params,
-            },
+      const data = await axios
+        .post("/api/oauth/kakao", {
+          headers: {
+            token: `${code_params}`,
           },
-        )
+        })
         .then((res) => {
           console.log(res);
           navigate("/");
         });
     } catch (err) {
-      console.log(err);
+      navigate("/");
+      alert(`로그인 실패!:${err}`);
     }
   };
-  const print_info = async () => {
-    const info = await get_info();
-
-    console.log(info);
-  };
-  // print_info()
-  print_info();
-  //   React.useEffect(async () => {});
+  get_info();
   return <div></div>;
 }
 

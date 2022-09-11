@@ -19,11 +19,7 @@ import Modal from "react-modal";
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const [isModalOpen, setIsModalOpen] = React.useState(true);
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+export default function SignIn({ closeModal }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,7 +32,7 @@ export default function SignIn() {
     <ThemeProvider theme={theme}>
       <div>
         <Modal
-          isOpen={isModalOpen}
+          isOpen={true}
           onRequestClose={closeModal}
           ariaHideApp={false}
           style={{

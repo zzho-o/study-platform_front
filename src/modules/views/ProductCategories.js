@@ -78,7 +78,7 @@ export default function ProductCategories() {
     <Box>
       <Container component="section" sx={{ mt: 8, mb: 4 }}>
         <Typography variant="h4" marked="center" align="center" component="h2">
-          {"WELCOME TO 프로젝트 이름 !"}
+          {"WELCOME TO 자두!"}
         </Typography>
         <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>
           {images.map((image) => (
