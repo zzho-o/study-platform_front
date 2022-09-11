@@ -20,8 +20,12 @@ import StudyChat from "./study/StudyChat";
 import StudyCalendar from "./study/StudyCalendar";
 import Personnel from "./personnel/Personnel";
 import CreateStudy from "./CreateStudy";
+import Calendar from "./calendar/Calendar";
+import SingIn from "./SignIn";
+import SingUp from "./SignUp";
 
 function App() {
+  console.log(process.env);
   return (
     <Router>
       <Routes>
@@ -29,12 +33,15 @@ function App() {
         <Route path="/openvidu" element={<OnlineMeeting />} />
         <Route path="/CreateStudy" element={<CreateStudy />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
         {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>
         <h2> {name} !</h2>
       </header> */}
         <Route path="/" element={<Home />} />
+        <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Personnel" element={<Personnel />} />
         <Route path="/Redirect" element={<Redirect />} />
       </Routes>

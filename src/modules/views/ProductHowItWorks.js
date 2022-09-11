@@ -65,6 +65,7 @@ function ProductHowItWorks(props) {
         })
       : setState({ ...state, [e.target.name]: e.target.value });
   };
+  
 
   return (
     <Box

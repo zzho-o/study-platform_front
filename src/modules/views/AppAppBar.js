@@ -3,6 +3,9 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
+import styled from "styled-components";
+import Modal from "react-modal";
+import SignIn from "../../SignIn";
 
 const rightLink = {
   fontSize: 16,
@@ -12,6 +15,9 @@ const rightLink = {
 
 function AppAppBar() {
   const [isLogin, setIsLogin] = React.useState(true);
+  const [closeModal, setCloseModal] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  console.log(modalOpen);
   return (
     <div>
       <AppBar position="fixed">
@@ -28,23 +34,9 @@ function AppAppBar() {
           </Link>
           {isLogin ? (
             <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-              <Link
-                color="inherit"
-                variant="h6"
-                underline="none"
-                href="/premium-themes/onepirate/sign-in/"
-                sx={rightLink}
-              >
-                {"로그인"}
-              </Link>
-              <Link
-                variant="h6"
-                underline="none"
-                href="/sign-up/"
-                sx={{ ...rightLink, color: "secondary.main" }}
-              >
-                {"회원 가입"}
-              </Link>
+              <LoginArea onClick={() => setModalOpen(true)}>
+                로그인 / 회원가입
+              </LoginArea>
             </Box>
           ) : (
             <Box sx={{ flex: 1 }}></Box>
@@ -52,8 +44,22 @@ function AppAppBar() {
         </Toolbar>
       </AppBar>
       <Toolbar />
+      {modalOpen && <SignIn />}
     </div>
   );
 }
-
+const LoginArea = styled.div`
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
+  width: 150px;
+  height: 35px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: #cc425e;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export default AppAppBar;
