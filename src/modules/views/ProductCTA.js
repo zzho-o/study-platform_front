@@ -27,7 +27,7 @@ function ProductCTA() {
             sx={{
               display: "flex",
               justifyContent: "center",
-              bgcolor: "warning.main",
+              bgcolor: "secondary.main",
               py: 8,
               px: 3,
             }}
@@ -35,28 +35,27 @@ function ProductCTA() {
             <Box
               component="form"
               onSubmit={handleSubmit}
-              sx={{ maxWidth: 400 }}
+              sx={{
+                maxWidth: 400,
+                height: 300,
+                display: "flex",
+                flexDirection: "center",
+                alignItems: "center",
+              }}
             >
-              <Typography variant="h2" component="h2" gutterBottom>
-                Receive offers
-              </Typography>
-              <Typography variant="h5">
-                Taste the holidays of the everyday close to home.
-              </Typography>
-              <TextField
-                noBorder
-                placeholder="Your email"
-                variant="standard"
-                sx={{ width: "100%", mt: 3, mb: 2 }}
-              />
-              <Button
-                type="submit"
-                color="primary"
-                variant="contained"
-                sx={{ width: "100%" }}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
-                Keep me updated
-              </Button>
+                <Typography variant={"h1"} color="secondary.light">
+                  Connecting
+                </Typography>
+                <Typography variant={"h1"} color="secondary.light">
+                  people
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Grid>
@@ -80,7 +79,7 @@ function ProductCTA() {
           />
           <Box
             component="img"
-            src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750"
+            src="https://cdn.codingworldnews.com/news/photo/202101/img_2022_0.jpg"
             alt="call to action"
             sx={{
               position: "absolute",

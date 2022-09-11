@@ -58,13 +58,13 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
 
 const images = [
   {
-    url: "https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400",
+    url: "https://media.dongwon.com/assets/_temp/post/191205/01.jpg",
     title: "STUDY",
     width: "50%",
     state: "study",
   },
   {
-    url: "https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400",
+    url: "http://jobfactory.or.kr/__files/tmp/3077114738_03479142.jpg",
     title: "PROJECT",
     width: "50%",
     state: "project",
