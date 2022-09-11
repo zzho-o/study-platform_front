@@ -1,6 +1,7 @@
 {
   "name": "study",
-  "proxy": "http://localhost:9000",
+  // "proxy": "http://localhost:9000",
+  "proxy": "http://54.180.148.170:8000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
