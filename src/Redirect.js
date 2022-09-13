@@ -17,7 +17,7 @@ function Redirect() {
   const get_info = async () => {
     try {
       const data = await axios
-        .post("/api/oauth/kakao", {
+        .post("https://jadu-study-flatform.shop/api/oauth/kakao", {
           headers: {
             token: `${code_params}`,
           },
