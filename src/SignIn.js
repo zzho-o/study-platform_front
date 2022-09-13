@@ -16,10 +16,13 @@ import FormButton from "./modules/form/FormButton";
 import { KAKAO_AUTH_URL } from "./Kakao";
 import { GITHUB_AUTH_URL } from "./GitHub";
 import Modal from "react-modal";
+import { isLogined, ModalOpen } from "./redux/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 const theme = createTheme();
 
 export default function SignIn({ closeModal }) {
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,6 +30,12 @@ export default function SignIn({ closeModal }) {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+  const HandleLoginButton = () => {
+    setTimeout(() => {
+      dispatch(isLogined(true));
+      dispatch(ModalOpen(false));
+    }, 1000);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -157,6 +166,7 @@ export default function SignIn({ closeModal }) {
                   size="large"
                   color="inherit"
                   fullWidth
+                  onClick={() => HandleLoginButton()}
                 >
                   로그인
                 </FormButton>

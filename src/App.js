@@ -8,7 +8,6 @@ import OnlineMeeting from "./OnlineMeeting/OnlineMeeting";
 import Chat from "./Chat/Chat";
 import Redirect from "./Redirect";
 import MyPage from "./MyPage";
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,11 +20,8 @@ import StudyCalendar from "./study/StudyCalendar";
 import Personnel from "./personnel/Personnel";
 import CreateStudy from "./CreateStudy";
 import Calendar from "./calendar/Calendar";
-import SingIn from "./SignIn";
-import SingUp from "./SignUp";
 
 function App() {
-  console.log(process.env);
   return (
     <Router>
       <Routes>
