@@ -30,7 +30,7 @@ function AppAppBar() {
             variant="h6"
             underline="none"
             color="inherit"
-            href="/premium-themes/onepirate/"
+            href="/"
             sx={{ fontSize: 24 }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>

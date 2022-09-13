@@ -42,8 +42,10 @@ export const userSlice = createSlice({
     setUserPoint(state, action) {
       state.userInfo.myPoint = action.payload;
     },
-    setUserCount(state, action) {
-      state.userInfo.lottoCount = state.userInfo.lottoCount - 1;
+    setUserBadge(state, action) {
+      state.userInfo.Badge = state.userInfo.Badge
+        ? [action.payload]
+        : [...state.userInfo.Badge, action.payload];
     },
   },
   extraReducers: (builder) => {
@@ -61,7 +63,7 @@ export const {
   logout,
   setUserNickname,
   setUserPoint,
-  setUserCount,
+  setUserBadge,
 } = userSlice.actions;
 
 export default userSlice.reducer;

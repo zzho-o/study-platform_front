@@ -49,10 +49,10 @@ function ProductCTA() {
                   flexDirection: "column",
                 }}
               >
-                <Typography variant={"h1"} color="secondary.light">
+                <Typography variant={"h3"} color="secondary.light">
                   Connecting
                 </Typography>
-                <Typography variant={"h1"} color="secondary.light">
+                <Typography variant={"h3"} color="secondary.light">
                   people
                 </Typography>
               </Box>
