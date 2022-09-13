@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import PersonnelSidebar from "./PersonnelSidebar";
-import Calendar from "../calendar/Calendar";
-import Chat from "../Chat/Chat";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const Container = styled.div`
+  background-color: #123412;
+  width: 100%;
+  height: 50%
   font-family: "Gothic A1", sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const HomeContainer = styled.div`
-  flex: 3;
-  padding: 20px;
+  background-color: #121112;
+  width: 100%;
+  max-height: 100%;
+  font-family: "Gothic A1", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,13 +32,10 @@ const Title = styled.h2`
 const Personnel = () => {
   const [option, setOption] = useState("Calendar");
   return (
-    <Container>
-      <PersonnelSidebar setOption={setOption} />
-      <HomeContainer>
-        <Title>{`My ${option}`}</Title>
-        {option === "Calendar" ? <Calendar /> : <Chat />}
-      </HomeContainer>
-    </Container>
+    <HomeContainer>
+      <Container>123</Container>
+      <Container>123</Container>
+    </HomeContainer>
   );
 };
 

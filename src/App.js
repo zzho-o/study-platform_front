@@ -20,6 +20,7 @@ import StudyCalendar from "./study/StudyCalendar";
 import Personnel from "./personnel/Personnel";
 import CreateStudy from "./CreateStudy";
 import Calendar from "./calendar/Calendar";
+import A from "./modules/views/StudyList";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/A" element={<A />} />
         {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>

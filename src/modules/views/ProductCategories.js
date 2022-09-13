@@ -141,7 +141,7 @@ export default function ProductCategories() {
       >
         <TextField
           noBorder
-          placeholder="찾고 있는 스터디나 프로젝트의 내용을 적어주세요"
+          placeholder="찾고 있는 스터디나 프로젝트의 제목을 적어주세요"
           variant="outlined"
           sx={{ width: "60%", mt: 0, mb: 5 }}
         />

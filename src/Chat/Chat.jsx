@@ -3,8 +3,9 @@ import styled from "styled-components";
 import AppAppBar from "../modules/views/AppAppBar";
 import Conversation from "./Conversation";
 import ChatBox from "./ChatBox";
-
+//Container-> width 100% 새로 만듦
 const Container = styled.div`
+  width: 100%;
   text-align: left;
   height: calc(100vh - 90px);
   display: flex;
@@ -59,7 +60,6 @@ const ProfileName = styled.h3``;
 const Chat = () => {
   return (
     <>
-      <AppAppBar />
       <Container>
         <ChatMenu>
           <ChatMenuWrapper>
