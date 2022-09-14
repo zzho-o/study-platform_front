@@ -15,7 +15,7 @@ import Switch from "@mui/material/Switch";
 import States from "../../StaticState";
 import { useNavigate } from "react-router-dom";
 
-function ProductHowItWorks(props) {
+function MainDetailSearch(props) {
   const navigate = useNavigate();
   const [state, setState] = React.useState({
     region: "",
@@ -89,6 +89,12 @@ function ProductHowItWorks(props) {
         {props.searchBy !== "" ? (
           <Container>
             <Container>
+              <Button onClick={() => navigate("/CreateStudy")}>
+                <Typography
+                  variant="h3"
+                  sx={{ mb: 2, bt: 2 }}
+                >{`게시글 생성하기`}</Typography>
+              </Button>
               <Grid container spacing={0}>
                 <Grid item xs={0} md={1.5}>
                   <FormControl sx={{ m: 1, minWidth: 100 }}>
@@ -285,4 +291,4 @@ function ProductHowItWorks(props) {
   );
 }
 
-export default ProductHowItWorks;
+export default MainDetailSearch;

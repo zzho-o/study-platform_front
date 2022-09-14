@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
 import Typography from "../components/Typography";
-import ProductHowItWorks from "./ProductHowItWorks";
+import MainDetailSearch from "./MainDetailSearch";
 import TextField from "../components/TextField";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -157,7 +157,7 @@ export default function ProductCategories() {
           검색
         </Button>
       </Box>
-      <ProductHowItWorks searchBy={searchBy} />
+      <MainDetailSearch searchBy={searchBy} />
     </Box>
   );
 }

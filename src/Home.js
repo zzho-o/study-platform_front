@@ -1,6 +1,6 @@
 import * as React from "react";
-import ProductCategories from "./modules/views/ProductCategories";
-import ProductCTA from "./modules/views/ProductCTA";
+import MainHeader from "./modules/views/MainHeader";
+import Mainfooter from "./modules/views/Mainfooter";
 import AppAppBar from "./modules/views/AppAppBar";
 import withRoot from "./modules/withRoot";
 
@@ -8,8 +8,8 @@ function Index() {
   return (
     <React.Fragment>
       <AppAppBar />
-      <ProductCategories />
-      <ProductCTA />
+      <MainHeader />
+      <Mainfooter />
     </React.Fragment>
   );
 }

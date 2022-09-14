@@ -36,11 +36,6 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Search" element={<Search />} />
         <Route path="/SubjectSearch" element={<SubjectSearch />} />
-        {/* <header className="App-header">
-        <Button variant="outlined">Create</Button>
-        <AppBar>menu</AppBar>
-        <h2> {name} !</h2>
-      </header> */}
         <Route path="/" element={<Home />} />
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Personnel" element={<Personnel />} />

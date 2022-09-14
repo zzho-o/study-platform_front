@@ -7,6 +7,11 @@ import Button from "./modules/components/Button";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import states from "./StaticState";
 
 export default function SignUp() {
   const [displayName, setDisplayName] = React.useState("zzho");
@@ -15,7 +20,16 @@ export default function SignUp() {
   const [tech, setTech] = React.useState(["react", "javascript"]);
   const [st, setSt] = React.useState("");
   const title = "";
-  const list = ["react", "spring", "javascript"];
+  const list = [];
+  const [study, setStudy] = React.useState("");
+  const [ct, setCt] = React.useState("");
+  const [rg, setRg] = React.useState("");
+  const [camera, setCamera] = React.useState("");
+  const [mic, setMic] = React.useState("");
+
+  const handleChange = (e) => {
+    setStudy(e.target.value);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -100,73 +114,86 @@ export default function SignUp() {
         </Grid>
         <Grid item xs={4}>
           <Grid container>
-            <Grid xs={12}>
-              <TextField
-                noBorder
-                label="study or project"
-                placeholder="임시 텍스트필드"
-                variant="outlined"
-                value={title}
-                sx={{ width: "100%", mb: 3 }}
-              />
-            </Grid>
-            <Grid xs={12}>
-              <TextField
-                noBorder
-                label="study or project"
-                placeholder="임시 텍스트필드"
-                variant="outlined"
-                value={title}
-                sx={{ width: "100%" }}
-              />
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">종류</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={study}
+                  label="Study"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"study"}>스터디</MenuItem>
+                  <MenuItem value={"project"}>프로젝트</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            noBorder
-            label="study or project"
-            placeholder="임시 텍스트필드"
-            variant="outlined"
-            value={title}
-            sx={{ width: "100%" }}
-          />
-        </Grid>
         <Grid item xs={4}>
-          <TextField
-            noBorder
-            placeholder="시"
-            variant="outlined"
-            value={title}
-            sx={{ width: "100%" }}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">시</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={rg}
+              label="Rg"
+              onChange={(e) => setRg(e.target.value)}
+            >
+              {states.region_bundle.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={8}>
-          <TextField
-            noBorder
-            placeholder="구"
-            variant="outlined"
-            value={title}
-            sx={{ width: "50%" }}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">구</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={ct}
+              label="Study"
+              onChange={(e) => setCt(e.target.value)}
+            >
+              {states.city[rg]
+                ? states.city[rg].map((item) => (
+                    <MenuItem value={item}>{item}</MenuItem>
+                  ))
+                : null}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={4}>
-          <TextField
-            noBorder
-            placeholder="카메라 여부"
-            variant="outlined"
-            value={title}
-            sx={{ width: "100%" }}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">카메라</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={camera}
+              label="Camera"
+              onChange={(e) => setCamera(e.target.value)}
+            >
+              <MenuItem value={"on"}>on</MenuItem>
+              <MenuItem value={"off"}>off</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={8}>
-          <TextField
-            noBorder
-            placeholder="마이크 여부"
-            variant="outlined"
-            value={title}
-            sx={{ width: "50%" }}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">마이크</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={mic}
+              label="Mic"
+              onChange={(e) => setMic(e.target.value)}
+            >
+              <MenuItem value={"on"}>on</MenuItem>
+              <MenuItem value={"off"}>off</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextareaAutosize
