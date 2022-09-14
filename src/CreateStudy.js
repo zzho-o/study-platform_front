@@ -99,7 +99,6 @@ export default function SignUp() {
           <TextField
             noBorder
             label="모집 기간"
-            placeholder="임시 텍스트필드"
             variant="outlined"
             value={title}
             sx={{ width: "100%" }}
@@ -109,7 +108,6 @@ export default function SignUp() {
           <TextField
             noBorder
             label="스터디 기간"
-            placeholder="임시 텍스트필드"
             variant="outlined"
             value={title}
             sx={{ width: "100%" }}
