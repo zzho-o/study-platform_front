@@ -294,7 +294,7 @@ function MainDetailSearch(props) {
               size="large"
               variant="contained"
               component="a"
-              href="/Search"
+              onClick={() => navigate("/Search")}
               sx={{ mt: 8 }}
             >
               찾기
