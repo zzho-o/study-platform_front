@@ -13,8 +13,10 @@ import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import Switch from "@mui/material/Switch";
 import States from "../../StaticState";
+import { useNavigate } from "react-router-dom";
 
 function ProductHowItWorks(props) {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     region: "",
     ct: "",
@@ -65,7 +67,6 @@ function ProductHowItWorks(props) {
         })
       : setState({ ...state, [e.target.name]: e.target.value });
   };
-  
 
   return (
     <Box
@@ -271,7 +272,7 @@ function ProductHowItWorks(props) {
               size="large"
               variant="contained"
               component="a"
-              href="/SearchResert"
+              href="/Search"
               sx={{ mt: 8 }}
             >
               찾기

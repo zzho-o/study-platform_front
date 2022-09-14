@@ -20,7 +20,9 @@ import StudyCalendar from "./study/StudyCalendar";
 import Personnel from "./personnel/Personnel";
 import CreateStudy from "./CreateStudy";
 import Calendar from "./calendar/Calendar";
-import A from "./modules/views/StudyList";
+import A from "./modules/views/StudyObject";
+import Search from "./modules/views/Search";
+import SubjectSearch from "./modules/views/SubjectSearch";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/A" element={<A />} />
+        <Route path="/Search" element={<Search />} />
+        <Route path="/SubjectSearch" element={<SubjectSearch />} />
         {/* <header className="App-header">
         <Button variant="outlined">Create</Button>
         <AppBar>menu</AppBar>

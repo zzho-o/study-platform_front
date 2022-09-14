@@ -7,6 +7,7 @@ import Typography from "../components/Typography";
 import ProductHowItWorks from "./ProductHowItWorks";
 import TextField from "../components/TextField";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const ImageBackdrop = styled("div")(({ theme }) => ({
   position: "absolute",
@@ -73,6 +74,7 @@ const images = [
 
 export default function ProductCategories() {
   const [searchBy, setSearchBy] = React.useState("");
+  const navigate = useNavigate();
 
   return (
     <Box>
@@ -150,6 +152,7 @@ export default function ProductCategories() {
           color="primary"
           variant="contained"
           sx={{ width: "20%", mb: 5 }}
+          onClick={() => navigate("/SubjectSearch")}
         >
           검색
         </Button>
