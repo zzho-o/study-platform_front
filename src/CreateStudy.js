@@ -12,8 +12,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import states from "./StaticState";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [displayName, setDisplayName] = React.useState("zzho");
   const [email, setEmail] = React.useState("aaa@naver.com");
   const [career, setCareer] = React.useState("신입");
@@ -235,7 +237,7 @@ export default function SignUp() {
               size="large"
               variant="contained"
               component="a"
-              href="/"
+              onClick={() => navigate("/")}
               sx={{ mt: 5, mb: 5 }}
             >
               취소
