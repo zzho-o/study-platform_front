@@ -31,6 +31,7 @@ function MainDetailSearch(props) {
     mobile: ["Android", "IOS"],
     etc: ["직접입력"],
   });
+  const [selected, setSelected] = React.useState([]);
   const [tech, setTech] = React.useState(false);
   const handleTech = (e) => {
     if (state.tech === e.currentTarget.name) {
@@ -51,6 +52,11 @@ function MainDetailSearch(props) {
       }
     }
     console.log(tech, e.currentTarget.name, state.tech);
+  };
+  const handleSelected = (e) => {
+    if (!selected.includes(e.currentTarget.name)) {
+      setSelected([...selected, e.currentTarget.name]);
+    }
   };
   const handleSwitch = () => {
     setState({
@@ -89,12 +95,6 @@ function MainDetailSearch(props) {
         {props.searchBy !== "" ? (
           <Container>
             <Container>
-              <Button onClick={() => navigate("/CreateStudy")}>
-                <Typography
-                  variant="h3"
-                  sx={{ mb: 2, bt: 2 }}
-                >{`게시글 생성하기`}</Typography>
-              </Button>
               <Grid container spacing={0}>
                 <Grid item xs={0} md={1.5}>
                   <FormControl sx={{ m: 1, minWidth: 100 }}>
@@ -270,9 +270,25 @@ function MainDetailSearch(props) {
               direction="row"
             >
               {tech
-                ? tech.map((item) => <Chip label={item} color="secondary" />)
+                ? tech.map((item) => (
+                    <Fab
+                      variant="extended"
+                      size="small"
+                      color="secondary"
+                      sx={{ ml: 1, mr: 1 }}
+                      name={item}
+                      onClick={handleSelected}
+                    >
+                      {`${item}`}
+                    </Fab>
+                  ))
                 : null}
             </Stack>
+            <Box>
+              {selected
+                ? selected.map((item) => <Chip sx={{ mr: 1 }} label={item} />)
+                : null}
+            </Box>
             <Button
               color="secondary"
               size="large"

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "@mui/material/Avatar";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LogoutIcon from "@mui/icons-material/Logout";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { useNavigate } from "react-router-dom";
 
 const rightLink = {
@@ -71,6 +72,10 @@ function AppAppBar() {
               <CalendarMonthIcon
                 sx={{ ml: 3 }}
                 onClick={() => navigate("/personnel")}
+              />
+              <BorderColorIcon
+                sx={{ ml: 3 }}
+                onClick={() => navigate("/createStudy")}
               />
               <LogoutIcon
                 sx={{ ml: 3 }}

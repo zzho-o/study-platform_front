@@ -49,6 +49,9 @@ export default function SignUp() {
         alignItems: "flex",
       }}
     >
+      <Typography sx={{ mt: 2 }} variant="h4">
+        게시글 작성
+      </Typography>
       <Grid container spacing={2} sx={{ mt: 3 }}>
         <Grid item xs={2}>
           <Avatar sx={{ width: "150px", height: "150px" }} />
