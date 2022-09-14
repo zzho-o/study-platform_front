@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PersonnelSidebar from "./PersonnelSidebar";
 import Calendar from "../calendar/Calendar";
 import Chat from "../Chat/Chat";
+import MyStudy from "../modules/views/MyStudy";
 
 const Container = styled.div`
   font-family: "Gothic A1", sans-serif;
@@ -30,7 +31,13 @@ const Personnel = () => {
       <PersonnelSidebar setOption={setOption} />
       <HomeContainer>
         <Title>{`My ${option}`}</Title>
-        {option === "Calendar" ? <Calendar /> : <Chat />}
+        {option === "Calendar" ? (
+          <Calendar />
+        ) : option === "Chat" ? (
+          <Chat />
+        ) : (
+          <MyStudy />
+        )}
       </HomeContainer>
     </Container>
   );

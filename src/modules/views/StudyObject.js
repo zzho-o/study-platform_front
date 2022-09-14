@@ -15,10 +15,12 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function StudyObject({ props }) {
+  const navigate = useNavigate();
   return (
-    <Button>
+    <Button onClick={() => navigate("/Chat/1")}>
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={<Avatar></Avatar>}

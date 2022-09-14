@@ -6,6 +6,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 
 const Container = styled.div`
   flex: 1;
@@ -95,7 +96,12 @@ const Sidebar = ({ setOption }) => {
           </Icon>
           <Name>1:1 채팅</Name>
         </List>
-
+        <List onClick={() => setOption("Study")}>
+          <Icon>
+            <AutoStoriesIcon />
+          </Icon>
+          <Name>나의 스터디 목록</Name>
+        </List>
         <List>
           <Icon>
             <SettingsIcon />

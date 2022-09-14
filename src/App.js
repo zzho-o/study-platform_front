@@ -23,12 +23,14 @@ import Calendar from "./calendar/Calendar";
 import A from "./modules/views/StudyObject";
 import Search from "./modules/views/Search";
 import SubjectSearch from "./modules/views/SubjectSearch";
+import GruopChat from "./Chat/GruopChat";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/chat/:id" element={<Chat />} />
+        {/* <Route path="/chat/:id" element={<Chat />} /> */}
+        <Route path="/chat/:id" element={<GruopChat />} />
         <Route path="/openvidu" element={<OnlineMeeting />} />
         <Route path="/CreateStudy" element={<CreateStudy />} />
         <Route path="/MyPage" element={<MyPage />} />
