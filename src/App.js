@@ -24,6 +24,7 @@ import A from "./modules/views/StudyObject";
 import Search from "./modules/views/Search";
 import SubjectSearch from "./modules/views/SubjectSearch";
 import GruopChat from "./Chat/GruopChat";
+import DetailStudy from "./DetailStudy";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/chat/:id" element={<GruopChat />} />
         <Route path="/openvidu" element={<OnlineMeeting />} />
         <Route path="/CreateStudy" element={<CreateStudy />} />
+        <Route path="/DetailStudy" element={<DetailStudy />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />

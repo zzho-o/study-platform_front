@@ -4,8 +4,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import StudyObject from "./StudyObject";
+import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Search({ closeModal }) {
+  const navigate = useNavigate();
   const project = [
     {
       subject: "React,Spring 프로젝트원 모집합니다!",
@@ -56,7 +59,9 @@ export default function Search({ closeModal }) {
         <Grid container spacing={2} sx={{ mt: 3 }}>
           {project.map((sbj) => (
             <Grid item xs={3} sx={{ ml: 4, mr: 4 }}>
-              <StudyObject props={sbj} />
+              <Button onClick={() => navigate("/DetailStudy")}>
+                <StudyObject props={sbj} />
+              </Button>
             </Grid>
           ))}
         </Grid>
