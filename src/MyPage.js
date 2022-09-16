@@ -68,6 +68,7 @@ export default function MyPage() {
         placeholder="닉네임"
         variant="outlined"
         value={displayName}
+        onChange={(e) => setDisplayName(e.target.value)}
         sx={{ width: "50%", marginBottom: 3 }}
       />
       <TextField
@@ -75,6 +76,7 @@ export default function MyPage() {
         placeholder="이메일"
         variant="outlined"
         value={email}
+        onChange={(e) => setEmail(e.target.value)}
         sx={{ width: "50%", marginBottom: 3 }}
       />
       <TextField
@@ -82,6 +84,7 @@ export default function MyPage() {
         placeholder="경력"
         variant="outlined"
         value={career}
+        onChange={(e) => setCareer(e.target.value)}
         sx={{ width: "50%", marginBottom: 3 }}
       />
       <Typography variant="h4" align="left" component="h2">
