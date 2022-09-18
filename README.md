@@ -3,6 +3,8 @@
 ### ⏲️ 개발기간
 2022년 07월 18일 ~ 2022년 09월 15일
 
+
+
 ---
 ### 👨‍👩‍👧‍👧 팀원구성
 |  이름  |  포지션  |
@@ -12,10 +14,7 @@
 | [민진기](https://github.com/Dmin3)|BE / Spring|
 | [강전호](https://github.com/zzho-o)|FE / React|
 
----
-### 📹 시연영상 ###
-[![Video Label](http://img.youtube.com/vi/NrwhZoxgbYQ/0.jpg)](https://youtu.be/NrwhZoxgbYQ)
----
+
 
 ### 📌 개발배경 및 목적
 
@@ -42,24 +41,7 @@ redux-toolkit (1.8.5)
 redux의 보일러 플레이트 작성을 간소화(action creator 생략)
 thunk, immer 기능이 내장되어 있어 별도 설치 없이도 비동기 처리 및 불변성 관리 가능
 
-
-### ⏲️ 개발기간
-2022년 07월 18일 ~ 2022년 09월 15일
-
----
-### 👨‍👩‍👧‍👧 팀원구성
-|  이름  |  포지션  |
-| :----: | :-----: |
-| [오진서](https://github.com/ohjinseo)|BE / Spring [팀장]|
-| [정연재](https://github.com/jyjae)|BE / Spring|
-| [민진기](https://github.com/Dmin3)|BE / Spring|
-| [강전호](https://github.com/zzho-o)|FE / React|
-
 ---
 ### 📹 시연영상 ###
 [![Video Label](http://img.youtube.com/vi/NrwhZoxgbYQ/0.jpg)](https://youtu.be/NrwhZoxgbYQ)
 ---
-
-### 💡 서비스 아키텍처
-![서비스 아키텍처](https://user-images.githubusercontent.com/80299170/190058923-c197377a-a728-4971-8f56-930750177443.png)
-# Jadu-Study-Platform
